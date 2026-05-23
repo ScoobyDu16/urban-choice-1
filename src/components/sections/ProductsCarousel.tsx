@@ -45,7 +45,7 @@ export default function ProductsCarousel({ products }: ProductsCarouselProps) {
           {products.map((product, i) => (
             <div
               key={product.id}
-              className="min-w-[280px] flex-shrink-0 sm:min-w-[300px] lg:min-w-[calc(25%-18px)]"
+              className="w-[260px] flex-none sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
               <ProductCard product={product} priority={i < 2} />
             </div>

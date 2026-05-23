@@ -120,9 +120,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="px-4">
-            <ProductsCarousel products={featuredProducts} />
-          </div>
+          <ProductsCarousel products={featuredProducts} />
 
           <div className="mt-8 text-center sm:hidden">
             <Link
