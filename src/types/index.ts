@@ -169,7 +169,6 @@ export interface SiteConfig {
   };
   integrations: {
     googleMapsApiKey?: string;
-    web3formsApiKey: string;
     googleAdsConversionId?: string;
     googleAdsConversionLabel?: string;
     googleSearchConsoleVerification?: string;

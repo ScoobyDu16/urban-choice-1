@@ -1,0 +1,167 @@
+@import 'tailwindcss';
+
+/* ─── Design tokens ─────────────────────────────────────────────────────────
+   Tailwind v4 @theme block.
+   Values MUST be raw HSL channels (no hsl() wrapper) so that opacity
+   modifiers (/10, /15, /20 …) resolve correctly.
+   ──────────────────────────────────────────────────────────────────────── */
+@theme {
+  /* ── Primary: #e07b00 ≈ hsl(33 100% 44%) ──────────────────────────── */
+  --color-primary: 33 100% 44%;
+  --color-primary-foreground: 0 0% 100%;
+
+  /* ── Light-mode: off-white body + dark navy text ────────────────────── */
+  --color-background: 220 20% 97%;
+  --color-foreground: 215 50% 10%;
+
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 215 50% 10%;
+
+  --color-popover: 0 0% 100%;
+  --color-popover-foreground: 215 50% 10%;
+
+  --color-secondary: 215 25% 93%;
+  --color-secondary-foreground: 215 50% 10%;
+
+  --color-muted: 215 20% 95%;
+  --color-muted-foreground: 215 25% 44%;
+
+  --color-accent: 33 80% 93%;
+  --color-accent-foreground: 33 70% 26%;
+
+  --color-destructive: 0 84% 60%;
+  --color-destructive-foreground: 0 0% 100%;
+
+  --color-border: 215 20% 89%;
+  --color-input: 215 20% 89%;
+  --color-ring: 33 100% 44%;
+
+  --radius: 0.5rem;
+  --font-inter: var(--font-inter), sans-serif;
+}
+
+/* ─── :root safety net ───────────────────────────────────────────────────── */
+:root {
+  --color-primary: 33 100% 44%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-background: 220 20% 97%;
+  --color-foreground: 215 50% 10%;
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 215 50% 10%;
+  --color-popover: 0 0% 100%;
+  --color-popover-foreground: 215 50% 10%;
+  --color-secondary: 215 25% 93%;
+  --color-secondary-foreground: 215 50% 10%;
+  --color-muted: 215 20% 95%;
+  --color-muted-foreground: 215 25% 44%;
+  --color-accent: 33 80% 93%;
+  --color-accent-foreground: 33 70% 26%;
+  --color-destructive: 0 84% 60%;
+  --color-destructive-foreground: 0 0% 100%;
+  --color-border: 215 20% 89%;
+  --color-input: 215 20% 89%;
+  --color-ring: 33 100% 44%;
+}
+
+/* ─── Dark mode: very dark navy ─────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: 215 50% 7%;
+    --color-foreground: 0 0% 96%;
+    --color-card: 215 45% 11%;
+    --color-card-foreground: 0 0% 96%;
+    --color-popover: 215 45% 11%;
+    --color-popover-foreground: 0 0% 96%;
+    --color-primary: 33 100% 44%;
+    --color-primary-foreground: 0 0% 100%;
+    --color-secondary: 215 40% 16%;
+    --color-secondary-foreground: 0 0% 92%;
+    --color-muted: 215 40% 16%;
+    --color-muted-foreground: 215 20% 60%;
+    --color-accent: 33 30% 20%;
+    --color-accent-foreground: 33 90% 72%;
+    --color-destructive: 0 62% 40%;
+    --color-destructive-foreground: 0 0% 100%;
+    --color-border: 215 40% 18%;
+    --color-input: 215 40% 18%;
+    --color-ring: 33 100% 44%;
+  }
+}
+
+/* ─── Base styles ────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  border-color: hsl(var(--color-border));
+}
+
+body {
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
+  font-feature-settings:
+    'rlig' 1,
+    'calt' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px hsl(var(--color-ring)),
+    0 0 0 4px hsl(var(--color-background));
+}
+
+/* ─── cursor-pointer on every interactive element ───────────────────────── */
+a,
+button,
+[role='button'],
+select,
+label[for],
+summary,
+[tabindex]:not([tabindex='-1']) {
+  cursor: pointer;
+}
+
+/* ─── Native <select> / <option> ────────────────────────────────────────── */
+select,
+select option {
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
+}
+
+/* ─── Form placeholder — clearly distinct from real input ───────────────── */
+::placeholder {
+  color: hsl(var(--color-muted-foreground) / 0.55);
+  font-style: italic;
+}
+
+/* ─── Accordion animations ───────────────────────────────────────────────── */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
