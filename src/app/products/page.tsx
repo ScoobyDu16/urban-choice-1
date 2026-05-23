@@ -1,0 +1,46 @@
+import React from 'react';
+import type { Metadata } from 'next';
+import { products } from '@/data/products';
+import ProductsGrid from '@/components/sections/ProductsGrid';
+import Breadcrumb from '@/components/layout/Breadcrumb';
+import { generatePageMetadata } from '@/lib/metadata';
+
+export const revalidate = 3600;
+
+export const metadata: Metadata = generatePageMetadata({
+  title: 'All Products',
+  description:
+    'Browse our complete catalogue of 500+ premium products across home, kitchen, office, wellness, outdoor, and tech categories. Quality guaranteed.',
+  keywords: [
+    'all products',
+    'product catalogue',
+    'urban choice products',
+    'premium products',
+    'online catalogue',
+  ],
+  canonicalPath: '/products',
+});
+
+export default function ProductsPage() {
+  return (
+    <div className="container mx-auto max-w-7xl px-4 py-8">
+      <Breadcrumb items={[{ label: 'Products', href: '/products' }]} />
+
+      <div className="mt-4 mb-10">
+        <p
+          className="mb-1 text-sm font-bold tracking-widest uppercase"
+          style={{ color: 'hsl(var(--color-primary))' }}
+        >
+          Catalogue
+        </p>
+        <h1 className="text-3xl font-extrabold sm:text-4xl">All Products</h1>
+        <p className="text-muted-foreground mt-3">
+          {products.length} products across {new Set(products.map((p) => p.category)).size}{' '}
+          categories
+        </p>
+      </div>
+
+      <ProductsGrid products={products} />
+    </div>
+  );
+}
