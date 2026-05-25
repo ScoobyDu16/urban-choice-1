@@ -10,7 +10,7 @@ export const categories: Category[] = [
     shortDescription: 'PPE and safety gear for construction and industrial use.',
     icon: 'ShieldCheck',
     image: {
-      url: 'https://images.unsplash.com/photo-1617118600610-dcdf743b3dfc?q=80&w=1170',
+      url: '/categories/safety-items.png',
       alt: 'Safety helmets and personal protective equipment',
       width: 800,
       height: 600,
@@ -58,7 +58,7 @@ export const categories: Category[] = [
     shortDescription: 'Wash basins, WCs, mixers, showers and bathroom accessories.',
     icon: 'Bath',
     image: {
-      url: 'https://plus.unsplash.com/premium_photo-1661902468735-eabf780f8ff6?w=600',
+      url: '/categories/sanitary-items.png',
       alt: 'Modern bathroom with sanitary fittings and fixtures',
       width: 800,
       height: 600,
@@ -111,7 +111,7 @@ export const categories: Category[] = [
     shortDescription: 'Hinges, locks, handles, hand tools and cutting accessories.',
     icon: 'Wrench',
     image: {
-      url: 'https://images.unsplash.com/photo-1683046451738-2658a7d9c18a?q=80&w=1074',
+      url: '/categories/hardware-items.png',
       alt: 'Hardware tools and building accessories',
       width: 800,
       height: 600,
@@ -159,7 +159,7 @@ export const categories: Category[] = [
     shortDescription: 'Wires, LED lights, switches, breakers and conduits.',
     icon: 'Zap',
     image: {
-      url: 'https://images.unsplash.com/photo-1570544389273-27246c0ba489?w=600',
+      url: '/categories/electrical-items.png',
       alt: 'Electrical wires, switches and circuit breakers',
       width: 800,
       height: 600,
@@ -212,7 +212,7 @@ export const categories: Category[] = [
     shortDescription: 'PPR & PVC pipes, valves, pumps and drainage solutions.',
     icon: 'Pipette',
     image: {
-      url: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=600',
+      url: '/categories/plumbing-items.png',
       alt: 'Plumbing pipes fittings and valves',
       width: 800,
       height: 600,
@@ -255,7 +255,7 @@ export const categories: Category[] = [
     shortDescription: 'Cement, bricks, blocks, rebar, gypsum and insulation materials.',
     icon: 'Building2',
     image: {
-      url: 'https://images.unsplash.com/photo-1560435650-7ec2e17ba926?q=80&w=1170',
+      url: '/categories/building-materials.png',
       alt: 'Building materials including cement bricks and construction supplies',
       width: 800,
       height: 600,
@@ -308,7 +308,7 @@ export const categories: Category[] = [
     shortDescription: 'Bolts, nuts, screws, anchors, rods and rivets.',
     icon: 'Settings',
     image: {
-      url: 'https://images.unsplash.com/photo-1617123623686-2b7b339785da?q=80&w=1173',
+      url: '/categories/fasteners.png',
       alt: 'Assorted fasteners including bolts nuts and screws',
       width: 800,
       height: 600,
@@ -351,7 +351,7 @@ export const categories: Category[] = [
     shortDescription: 'Drills, grinders, saws, welding machines and compressors.',
     icon: 'Zap',
     image: {
-      url: 'https://images.unsplash.com/photo-1540103711724-ebf833bde8d1?q=80&w=1176',
+      url: '/categories/power-tools.png',
       alt: 'Power tools including drills and angle grinders',
       width: 800,
       height: 600,
@@ -399,7 +399,7 @@ export const categories: Category[] = [
     shortDescription: 'Emulsion paints, primers, rollers, brushes and spray machines.',
     icon: 'Paintbrush',
     image: {
-      url: 'https://images.unsplash.com/photo-1674485190969-4347f72aad0e?q=80&w=1170',
+      url: '/categories/paint-tools.png',
       alt: 'Paint cans brushes and painting tools',
       width: 800,
       height: 600,
@@ -441,7 +441,7 @@ export const categories: Category[] = [
     shortDescription: 'Bubble wrap, stretch film, tape, bags and packing supplies.',
     icon: 'Package',
     image: {
-      url: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80',
+      url: '/categories/packaging-materials.png',
       alt: 'Packaging materials including bubble wrap and stretch film',
       width: 800,
       height: 600,

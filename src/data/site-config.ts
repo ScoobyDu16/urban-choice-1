@@ -6,7 +6,7 @@ export const siteConfig: SiteConfig = {
     legalName: 'Urban Choice Building Materials Trading',
     tagline: 'Your Trusted Building Materials Partner in Dubai',
     description:
-      'Urban Choice is a leading building materials supplier in Dubai, UAE. We specialize in providing high-quality construction materials including paint, sanitary ware, electrical items, hardware tools, plumbing supplies, and tiles. With years of experience in the industry, we have built a reputation for reliability, quality products, and exceptional customer service.',
+      'Urban Choice is a leading building materials supplier in Dubai, UAE. We supply high-quality construction materials across 10 categories — safety items, sanitary ware, hardware, electrical supplies, plumbing, building materials, fasteners, power tools, paints, and packaging materials. With years of experience in the industry, we have built a reputation for reliability, quality products, and exceptional customer service.',
     logo: '/images/logo.svg',
     favicon: '/favicon.ico',
     url: 'https://urbanchoicebmt.com',
@@ -40,15 +40,16 @@ export const siteConfig: SiteConfig = {
     defaultTitle: 'Urban Choice Building Materials Trading – Dubai, UAE',
     titleTemplate: '%s | Urban Choice Building Materials',
     defaultDescription:
-      'Urban Choice is a trusted building materials supplier in Dubai, UAE. We supply paint, sanitary ware, electrical items, hardware tools, plumbing supplies, and tiles.',
+      'Urban Choice is a trusted building materials supplier in Dubai, UAE. We supply safety items, sanitary ware, hardware, electrical supplies, plumbing materials, building materials, fasteners, power tools, paints, and packaging materials.',
     defaultKeywords: [
       'building materials Dubai',
       'construction materials UAE',
-      'paint supplier Dubai',
+      'safety items Dubai',
       'sanitary ware Dubai',
-      'tiles Dubai',
       'hardware tools Dubai',
+      'electrical supplies UAE',
       'plumbing supplies UAE',
+      'power tools Dubai',
       'urban choice Dubai',
     ],
     defaultOgImage: '/images/og-default.jpg',

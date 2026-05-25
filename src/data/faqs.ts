@@ -26,14 +26,14 @@ export const faqs: FAQ[] = [
     id: 'faq-004',
     question: 'Are your products compliant with Dubai Municipality standards?',
     answer:
-      'Yes. All products we supply — including paints, tiles, plumbing pipes, electrical items, and sanitary ware — comply with applicable Dubai Municipality and UAE standards. We stock from reputable brands such as Jotun, Dulux, Grohe, RAK Ceramics, Legrand, Philips, Wavin, and Ariston.',
+      'Yes. All products we supply — including safety items, sanitary ware, electrical items, plumbing pipes, power tools, building materials, and paints — comply with applicable Dubai Municipality and UAE standards. We source from established, reputable manufacturers across all 10 categories.',
     category: 'products',
   },
   {
     id: 'faq-005',
-    question: 'Can I visit your showroom to see tiles and sanitary ware?',
+    question: 'Can I visit your showroom to see products?',
     answer:
-      'Yes, we welcome project visits and showroom appointments. Our showroom in Dubai is open Saturday to Thursday, 9:00 AM – 9:00 PM, and Friday 2:00 PM – 9:00 PM. Call us on 04 335 8298 or WhatsApp +971 54 586 8790 to arrange a visit.',
+      'Yes, we welcome project visits and showroom appointments. Our showroom in Dubai displays sanitary ware, hardware, and other product ranges. We are open Saturday to Thursday, 9:00 AM – 9:00 PM, and Friday 2:00 PM – 9:00 PM. Call us on 04 335 8298 or WhatsApp +971 54 586 8790 to arrange a visit.',
     category: 'services',
   },
   {
@@ -66,9 +66,9 @@ export const faqs: FAQ[] = [
   },
   {
     id: 'faq-010',
-    question: 'Do you provide product samples for tiles and flooring?',
+    question: 'Do you provide product samples?',
     answer:
-      'Yes, tile and flooring samples are available from our showroom. We recommend visiting to see the actual colour, texture, and size before placing a large order. For out-of-town clients, we can arrange sample delivery — contact us for details.',
+      'Yes, product samples for sanitary ware, bathroom accessories, and other display items are available from our showroom. We recommend visiting to see the actual finish and quality before placing a large order. For out-of-town clients, we can arrange sample delivery for select products — contact us for details.',
     category: 'services',
   },
 ];

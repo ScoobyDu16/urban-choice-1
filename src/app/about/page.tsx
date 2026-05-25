@@ -16,7 +16,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = generatePageMetadata({
   title: 'About Us',
   description:
-    'Learn about Urban Choice Building Materials Trading — your trusted supplier of paints, tiles, sanitary ware, electrical items, plumbing supplies and hardware in Dubai, UAE.',
+    'Learn about Urban Choice Building Materials Trading — your trusted supplier of safety items, sanitary ware, hardware, electrical supplies, plumbing materials, power tools, paints, fasteners, building materials, and packaging in Dubai, UAE.',
   keywords: [
     'about urban choice Dubai',
     'building materials supplier Dubai',
@@ -29,7 +29,7 @@ const stats = [
   { icon: Building2, value: '10+', label: 'Years in Business' },
   { icon: Users, value: '5,000+', label: 'Projects Completed' },
   { icon: Award, value: '20+', label: 'Premium Brands' },
-  { icon: BadgeCheck, value: '500+', label: 'Products in Stock' },
+  { icon: BadgeCheck, value: '100+', label: 'Products in Stock' },
 ];
 
 const values = [
@@ -141,11 +141,11 @@ export default function AboutPage() {
                   materials at competitive prices, backed by expert advice and reliable supply.
                 </p>
                 <p>
-                  Over the years, we have built strong partnerships with the world&apos;s leading
-                  building materials brands — including Jotun, Dulux, Grohe, RAK Ceramics, Legrand,
-                  Philips, Wavin, and Ariston — allowing us to offer an extensive catalogue that
-                  meets the full spectrum of residential, commercial, and hospitality project
-                  requirements.
+                  Over the years, we have built an extensive catalogue spanning 10 product
+                  categories — safety items, sanitary ware, hardware, electrical supplies, plumbing
+                  materials, building materials, fasteners, power tools, paints &amp; paint tools,
+                  and packaging materials — covering every stage of a construction or fit-out
+                  project.
                 </p>
                 <p>
                   Today, Urban Choice is a trusted name on construction sites across Dubai, Sharjah,
@@ -246,8 +246,8 @@ export default function AboutPage() {
           <div className="relative">
             <h2 className="text-3xl font-extrabold">Ready to Start Your Project?</h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-white/80">
-              Browse our full catalogue of building materials or contact us for a custom project
-              quote. We respond within 2 business hours.
+              Browse our full catalogue of 100+ products across 10 categories, or contact us for a
+              custom project quote. We respond within 2 business hours.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button asChild size="xl" variant="secondary">

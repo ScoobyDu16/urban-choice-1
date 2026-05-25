@@ -5,7 +5,7 @@ export const banners: Banner[] = [
     id: 'banner-001',
     title: 'Your Trusted Building Materials Partner in Dubai',
     subtitle:
-      'Premium paints, tiles, sanitary ware, electrical items, plumbing supplies, and hardware tools — all under one roof. Serving contractors and developers across the UAE.',
+      'Safety items, sanitary ware, hardware, electrical supplies, plumbing, building materials, fasteners, power tools, paints, and packaging — all under one roof. Serving contractors and developers across the UAE.',
     ctaText: 'Explore Products',
     ctaUrl: '/products',
     secondaryCtaText: 'Chat on WhatsApp',
@@ -26,22 +26,22 @@ export const banners: Banner[] = [
   },
   {
     id: 'banner-002',
-    title: 'Premium Tiles & Flooring for Every Project',
+    title: 'Complete Safety & PPE Supplies in Dubai',
     subtitle:
-      'From classic ceramics to large-format porcelain slabs and natural stone — discover hundreds of tile designs for residential and commercial spaces across Dubai.',
-    ctaText: 'View Tiles',
-    ctaUrl: '/categories/tiles-flooring',
+      'Helmets, harnesses, safety shoes, reflective vests, respirators, and more — quality personal protective equipment for construction sites and industrial workplaces across the UAE.',
+    ctaText: 'View Safety Items',
+    ctaUrl: '/categories/safety-items',
     secondaryCtaText: 'Get a Quote',
     secondaryCtaUrl: '/contact',
     image: {
-      url: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=1600&q=85',
-      alt: 'Premium porcelain tiles and flooring in a modern Dubai interior',
+      url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85',
+      alt: 'Safety equipment and PPE for construction sites in Dubai',
       width: 1600,
       height: 900,
     },
     mobileImage: {
-      url: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=768&q=80',
-      alt: 'Premium tiles and flooring',
+      url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=768&q=80',
+      alt: 'Safety equipment and PPE',
       width: 768,
       height: 900,
     },
@@ -49,11 +49,11 @@ export const banners: Banner[] = [
   },
   {
     id: 'banner-003',
-    title: 'Top Paint Brands. Expert Advice.',
+    title: 'Paints, Tools & Coatings for Every Surface',
     subtitle:
-      'Jotun, Dulux, Sigma, and more — we stock the full range of interior and exterior paints engineered for the UAE climate. Custom colour mixing available in-store.',
-    ctaText: 'Shop Paints',
-    ctaUrl: '/categories/paint-finishes',
+      'Emulsion paints, enamel paints, waterproof coatings, primers, rollers, brushes, and spray machines — everything you need for a professional finish on any project.',
+    ctaText: 'Shop Paints & Tools',
+    ctaUrl: '/categories/paints-paint-tools',
     secondaryCtaText: 'Contact Us',
     secondaryCtaUrl: '/contact',
     image: {

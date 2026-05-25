@@ -88,13 +88,32 @@ export default function CategoryCardWithCarousel({
               <div key={product.id} className="w-full flex-none">
                 {/* Product image */}
                 <div className="relative mx-2 aspect-[4/3] overflow-hidden rounded-xl bg-slate-100">
-                  <Image
-                    src={product.thumbnail.url}
-                    alt={product.thumbnail.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover"
-                  />
+                  {product.thumbnail.url ? (
+                    <Image
+                      src={product.thumbnail.url}
+                      alt={product.thumbnail.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-slate-100">
+                      <svg
+                        className="h-8 w-8 text-slate-300"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.5}
+                          d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"
+                        />
+                      </svg>
+                      <span className="text-xs font-medium text-slate-400">Coming soon</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Product info */}

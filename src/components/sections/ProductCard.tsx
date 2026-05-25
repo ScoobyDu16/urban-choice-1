@@ -31,16 +31,35 @@ export default function ProductCard({
 
   const imageContent = (
     <>
-      <Image
-        src={product.thumbnail.url}
-        alt={product.thumbnail.alt}
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-        className="object-cover transition-transform duration-700 group-hover:scale-105"
-        priority={priority}
-        placeholder="blur"
-        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAACAwEA/8QAHhAAAgIBBQEAAAAAAAAAAAAAAAECAxESMSH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoN8LK1OjW7T2ixI2bBPLsAAAAAAAAA/9k="
-      />
+      {product.thumbnail.url ? (
+        <Image
+          src={product.thumbnail.url}
+          alt={product.thumbnail.alt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          priority={priority}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAACAwEA/8QAHhAAAgIBBQEAAAAAAAAAAAAAAAECAxESMSH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoN8LK1OjW7T2ixI2bBPLsAAAAAAAAA/9k="
+        />
+      ) : (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-100">
+          <svg
+            className="h-10 w-10 text-slate-300"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"
+            />
+          </svg>
+          <span className="text-xs font-medium text-slate-400">Image coming soon</span>
+        </div>
+      )}
       {product.featured && (
         <span
           className="absolute top-3 left-3 rounded-full px-2.5 py-0.5 text-xs font-bold text-white shadow-md"
@@ -64,13 +83,11 @@ export default function ProductCard({
     >
       {/* Image */}
       {noLink ? (
-        <div className="relative block aspect-[4/3] overflow-hidden bg-slate-100">
-          {imageContent}
-        </div>
+        <div className="relative block aspect-4/3 overflow-hidden bg-slate-100">{imageContent}</div>
       ) : (
         <Link
           href={`/products/${product.slug}`}
-          className="relative block aspect-[4/3] overflow-hidden bg-slate-100"
+          className="relative block aspect-4/3 overflow-hidden bg-slate-100"
           tabIndex={-1}
           aria-hidden="true"
         >
