@@ -42,19 +42,19 @@ export interface Product {
   images: ProductImage[];
   thumbnail: ProductImage;
   shortDescription: string;
-  fullDescription: string;
-  tags: string[];
+  fullDescription?: string;
+  tags?: string[];
   seo: ProductSEO;
   price?: number;
   priceUnit?: string;
   currency?: string;
   availability: AvailabilityStatus;
   featured: boolean;
-  specifications: ProductSpecification[];
-  faqs: ProductFAQ[];
-  schema: ProductSchema;
-  createdAt: string;
-  updatedAt: string;
+  specifications?: ProductSpecification[];
+  faqs?: ProductFAQ[];
+  schema?: ProductSchema;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface Category {

@@ -95,7 +95,7 @@ export default function Header() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 rounded bg-white/20 px-2 py-0.5 text-white transition-colors hover:bg-white/30"
+                className="flex items-center gap-1 rounded bg-green-500 px-2 py-0.5 text-white transition-colors hover:bg-green-600"
                 onClick={() => trackWhatsAppClick('header-topbar')}
                 aria-label="Chat on WhatsApp"
               >

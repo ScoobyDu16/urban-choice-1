@@ -12,9 +12,15 @@ import { cn } from '@/lib/utils';
 interface ProductCardProps {
   product: Product;
   priority?: boolean;
+  /** When true, removes all navigation links (used on the /products page) */
+  noLink?: boolean;
 }
 
-export default function ProductCard({ product, priority = false }: ProductCardProps) {
+export default function ProductCard({
+  product,
+  priority = false,
+  noLink = false,
+}: ProductCardProps) {
   const { showAvailability, showViewDetailsCta } = siteConfig.features;
   const { business } = siteConfig;
 
@@ -23,42 +29,54 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
 
   const whatsappMsg = `Hi, I would like to inquire about: ${product.name}`;
 
+  const imageContent = (
+    <>
+      <Image
+        src={product.thumbnail.url}
+        alt={product.thumbnail.alt}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
+        priority={priority}
+        placeholder="blur"
+        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAACAwEA/8QAHhAAAgIBBQEAAAAAAAAAAAAAAAECAxESMSH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoN8LK1OjW7T2ixI2bBPLsAAAAAAAAA/9k="
+      />
+      {product.featured && (
+        <span
+          className="absolute top-3 left-3 rounded-full px-2.5 py-0.5 text-xs font-bold text-white shadow-md"
+          style={{ backgroundColor: 'hsl(var(--color-primary))' }}
+        >
+          ★ Featured
+        </span>
+      )}
+      {/* Hover overlay */}
+      <div
+        className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{ backgroundColor: 'hsl(var(--color-primary) / 0.10)' }}
+      />
+    </>
+  );
+
   return (
     <div
       className="group border-border bg-card flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
       style={{ ['--tw-shadow-color' as string]: 'hsl(var(--color-primary) / 0.15)' }}
     >
       {/* Image */}
-      <Link
-        href={`/products/${product.slug}`}
-        className="relative block aspect-[4/3] overflow-hidden bg-slate-100"
-        tabIndex={-1}
-        aria-hidden="true"
-      >
-        <Image
-          src={product.thumbnail.url}
-          alt={product.thumbnail.alt}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
-          priority={priority}
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAACAwEA/8QAHhAAAgIBBQEAAAAAAAAAAAAAAAECAxESMSH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoN8LK1OjW7T2ixI2bBPLsAAAAAAAAA/9k="
-        />
-        {product.featured && (
-          <span
-            className="absolute top-3 left-3 rounded-full px-2.5 py-0.5 text-xs font-bold text-white shadow-md"
-            style={{ backgroundColor: 'hsl(var(--color-primary))' }}
-          >
-            ★ Featured
-          </span>
-        )}
-        {/* Hover overlay */}
-        <div
-          className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{ backgroundColor: 'hsl(var(--color-primary) / 0.10)' }}
-        />
-      </Link>
+      {noLink ? (
+        <div className="relative block aspect-[4/3] overflow-hidden bg-slate-100">
+          {imageContent}
+        </div>
+      ) : (
+        <Link
+          href={`/products/${product.slug}`}
+          className="relative block aspect-[4/3] overflow-hidden bg-slate-100"
+          tabIndex={-1}
+          aria-hidden="true"
+        >
+          {imageContent}
+        </Link>
+      )}
 
       {/* Content */}
       <div className="flex flex-1 flex-col p-4">
@@ -74,11 +92,15 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
         </span>
 
         {/* Product name */}
-        <Link href={`/products/${product.slug}`}>
-          <h3 className="hover:text-primary line-clamp-2 text-base leading-snug font-bold transition-colors">
-            {product.name}
-          </h3>
-        </Link>
+        {noLink ? (
+          <h3 className="line-clamp-2 text-base leading-snug font-bold">{product.name}</h3>
+        ) : (
+          <Link href={`/products/${product.slug}`}>
+            <h3 className="hover:text-primary line-clamp-2 text-base leading-snug font-bold transition-colors">
+              {product.name}
+            </h3>
+          </Link>
+        )}
 
         {/* Short description */}
         <p className="text-muted-foreground mt-2 line-clamp-2 flex-1 text-sm">
@@ -92,7 +114,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
 
         {/* Actions */}
         <div className="mt-4 flex gap-2">
-          {showViewDetailsCta && (
+          {showViewDetailsCta && !noLink && (
             <Button
               asChild
               size="sm"
@@ -112,7 +134,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
             size="sm"
             className={cn(
               'gap-1.5 text-white shadow-sm transition-all duration-200 hover:scale-[1.02] hover:opacity-90',
-              showViewDetailsCta ? 'flex-1' : 'w-full',
+              showViewDetailsCta && !noLink ? 'flex-1' : 'w-full',
             )}
             style={{ backgroundColor: 'hsl(var(--color-primary))' }}
           >

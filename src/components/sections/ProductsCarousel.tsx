@@ -2,20 +2,35 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import ProductCard from '@/components/sections/ProductCard';
 import type { Product } from '@/types';
 
 interface ProductsCarouselProps {
   products: Product[];
+  /** Auto-advances slides indefinitely when true */
+  autoplay?: boolean;
+  /** Delay between auto-advances in ms (default 3500) */
+  autoplayDelay?: number;
+  /** Pass noLink to every ProductCard */
+  noLink?: boolean;
 }
 
-export default function ProductsCarousel({ products }: ProductsCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
-    align: 'start',
-    slidesToScroll: 1,
-  });
+export default function ProductsCarousel({
+  products,
+  autoplay = false,
+  autoplayDelay = 3500,
+  noLink = false,
+}: ProductsCarouselProps) {
+  const plugins = autoplay
+    ? [Autoplay({ delay: autoplayDelay, stopOnInteraction: false, stopOnMouseEnter: true })]
+    : [];
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: autoplay, align: 'start', slidesToScroll: 1 },
+    plugins,
+  );
 
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
@@ -47,16 +62,16 @@ export default function ProductsCarousel({ products }: ProductsCarouselProps) {
               key={product.id}
               className="w-[260px] flex-none sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
-              <ProductCard product={product} priority={i < 2} />
+              <ProductCard product={product} priority={i < 2} noLink={noLink} />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Nav buttons */}
+      {/* Prev button */}
       <button
         onClick={scrollPrev}
-        disabled={!canScrollPrev}
+        disabled={!autoplay && !canScrollPrev}
         className="text-foreground absolute top-1/2 -left-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border shadow-lg transition-all duration-200 hover:scale-110 hover:border-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
         style={{
           backgroundColor: 'hsl(var(--color-card))',
@@ -76,9 +91,11 @@ export default function ProductsCarousel({ products }: ProductsCarouselProps) {
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
+
+      {/* Next button */}
       <button
         onClick={scrollNext}
-        disabled={!canScrollNext}
+        disabled={!autoplay && !canScrollNext}
         className="text-foreground absolute top-1/2 -right-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border shadow-lg transition-all duration-200 hover:scale-110 hover:border-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
         style={{
           backgroundColor: 'hsl(var(--color-card))',

@@ -1,0 +1,185 @@
+'use client';
+
+import React, { useCallback, useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import { ArrowRight, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import type { Category, Product } from '@/types';
+import { siteConfig } from '@/data/site-config';
+import { generateWhatsAppUrl } from '@/lib/utils';
+
+interface CategoryCardWithCarouselProps {
+  category: Category;
+  products: Product[];
+  priority?: boolean;
+}
+
+export default function CategoryCardWithCarousel({
+  category,
+  products,
+  priority = false,
+}: CategoryCardWithCarouselProps) {
+  const { business } = siteConfig;
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start', slidesToScroll: 1 }, [
+    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }),
+  ]);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const update = () => setCurrentIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on('select', update);
+    emblaApi.on('reInit', update);
+    return () => {
+      emblaApi.off('select', update);
+      emblaApi.off('reInit', update);
+    };
+  }, [emblaApi]);
+
+  if (products.length === 0) return null;
+
+  const currentProduct = products[currentIndex] ?? products[0];
+  const whatsappMsg = `Hi, I would like to inquire about: ${currentProduct.name}`;
+
+  return (
+    <div className="group border-border bg-card flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:shadow-lg">
+      {/* Category header image */}
+      <Link
+        href={`/categories/${category.slug}`}
+        className="relative block h-28 overflow-hidden"
+        tabIndex={-1}
+        aria-hidden="true"
+      >
+        <Image
+          src={category.image.url}
+          alt={category.image.alt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          priority={priority}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAACAwEA/8QAHhAAAgIBBQEAAAAAAAAAAAAAAAECAxESMSH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoN8LK1OjW7T2ixI2bBPLsAAAAAAAAA/9k="
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+        <div className="absolute right-0 bottom-0 left-0 flex items-center justify-between px-4 pb-3">
+          <h3 className="text-base leading-tight font-extrabold text-white">{category.name}</h3>
+          <span
+            className="flex items-center gap-1 text-xs font-semibold"
+            style={{ color: 'hsl(var(--color-primary))' }}
+          >
+            View All <ArrowRight className="h-3 w-3" />
+          </span>
+        </div>
+      </Link>
+
+      {/* Mini product carousel */}
+      <div className="relative px-2 pt-3 pb-2">
+        <div ref={emblaRef} className="overflow-hidden">
+          <div className="flex">
+            {products.map((product) => (
+              <div key={product.id} className="w-full flex-none">
+                {/* Product image */}
+                <div className="relative mx-2 aspect-[4/3] overflow-hidden rounded-xl bg-slate-100">
+                  <Image
+                    src={product.thumbnail.url}
+                    alt={product.thumbnail.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Product info */}
+                <div className="px-2 pt-2 pb-1">
+                  <p className="line-clamp-1 text-sm leading-snug font-bold">{product.name}</p>
+                  <p className="text-muted-foreground mt-0.5 line-clamp-2 text-xs leading-relaxed">
+                    {product.shortDescription}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Carousel nav buttons */}
+        <button
+          onClick={scrollPrev}
+          className="bg-card absolute top-1/2 left-0 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border shadow transition-all hover:scale-110 hover:text-white"
+          style={{ borderColor: 'hsl(var(--color-border))' }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'hsl(var(--color-primary))';
+            e.currentTarget.style.borderColor = 'hsl(var(--color-primary))';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'hsl(var(--color-card))';
+            e.currentTarget.style.borderColor = 'hsl(var(--color-border))';
+          }}
+          aria-label="Previous product"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+        <button
+          onClick={scrollNext}
+          className="bg-card absolute top-1/2 right-0 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border shadow transition-all hover:scale-110 hover:text-white"
+          style={{ borderColor: 'hsl(var(--color-border))' }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'hsl(var(--color-primary))';
+            e.currentTarget.style.borderColor = 'hsl(var(--color-primary))';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'hsl(var(--color-card))';
+            e.currentTarget.style.borderColor = 'hsl(var(--color-border))';
+          }}
+          aria-label="Next product"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
+      </div>
+
+      {/* Dot indicators */}
+      <div className="flex justify-center gap-1.5 pb-3">
+        {products.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => emblaApi?.scrollTo(i)}
+            className="h-1.5 rounded-full transition-all duration-300"
+            style={{
+              width: i === currentIndex ? '20px' : '6px',
+              backgroundColor:
+                i === currentIndex ? 'hsl(var(--color-primary))' : 'hsl(var(--color-border))',
+            }}
+            aria-label={`Go to product ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* WhatsApp CTA for the active product */}
+      <div className="border-border border-t px-4 py-3">
+        <Button
+          asChild
+          size="sm"
+          className="w-full gap-1.5 text-white transition-all hover:opacity-90"
+          style={{ backgroundColor: '#25D366' }}
+        >
+          <a
+            href={generateWhatsAppUrl(business.whatsapp, whatsappMsg)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Inquire about ${currentProduct.name} on WhatsApp`}
+          >
+            <MessageCircle className="h-3.5 w-3.5" />
+            Inquire Now
+          </a>
+        </Button>
+      </div>
+    </div>
+  );
+}

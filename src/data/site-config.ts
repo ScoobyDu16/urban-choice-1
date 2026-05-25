@@ -11,8 +11,8 @@ export const siteConfig: SiteConfig = {
     favicon: '/favicon.ico',
     url: 'https://urbanchoicebmt.com',
     email: 'urbanchoicebmt@gmail.com',
-    phone: '04 335 8298',
-    mobile: '+971 54 586 8790',
+    phone: '04 332 6885',
+    mobile: '04 335 8298',
     whatsapp: '971545868790',
     address: {
       street: 'Dubai',
@@ -33,10 +33,7 @@ export const siteConfig: SiteConfig = {
       facebook: 'https://facebook.com/urbanchoicebmt',
       instagram: 'https://instagram.com/urbanchoicebmt',
     },
-    businessHours: [
-      { days: 'Saturday – Thursday', hours: '9:00 AM – 9:00 PM' },
-      { days: 'Friday', hours: '2:00 PM – 9:00 PM' },
-    ],
+    businessHours: [{ days: 'Monday – Saturday', hours: '8:30 AM – 6:00 PM' }],
     founded: '2015',
   },
   seo: {

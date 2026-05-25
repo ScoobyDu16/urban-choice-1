@@ -12,13 +12,14 @@ import {
   Package,
 } from 'lucide-react';
 import HeroCarousel from '@/components/sections/HeroCarousel';
+import BrandsMarquee from '@/components/sections/BrandsMarquee';
 import ProductsCarousel from '@/components/sections/ProductsCarousel';
-import CategoryCard from '@/components/sections/CategoryCard';
+import CategoryCardWithCarousel from '@/components/sections/CategoryCardWithCarousel';
 import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel';
 import FaqAccordion from '@/components/sections/FaqAccordion';
 import { Button } from '@/components/ui/button';
 import { getActiveBanners } from '@/data/banners';
-import { getFeaturedProducts } from '@/data/products';
+import { getFeaturedProducts, getProductsByCategory } from '@/data/products';
 import { getFeaturedCategories } from '@/data/categories';
 import { getFeaturedTestimonials } from '@/data/testimonials';
 import { faqs } from '@/data/faqs';
@@ -60,8 +61,12 @@ const stats = [
 
 export default function HomePage() {
   const banners = getActiveBanners();
-  const featuredProducts = getFeaturedProducts(4);
+  const featuredProducts = getFeaturedProducts();
   const featuredCategories = getFeaturedCategories(3);
+  const categoryProducts = featuredCategories.map((cat) => ({
+    category: cat,
+    products: getProductsByCategory(cat.slug),
+  }));
   const testimonials = getFeaturedTestimonials();
   const topFaqs = faqs.slice(0, 6);
 
@@ -120,7 +125,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <ProductsCarousel products={featuredProducts} />
+          <ProductsCarousel products={featuredProducts} autoplay autoplayDelay={3500} />
 
           <div className="mt-8 text-center sm:hidden">
             <Link
@@ -134,44 +139,47 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Categories ────────────────────────────────────────────────────── */}
+      {/* ── Popular Categories ────────────────────────────────────────────── */}
       <section className="py-20" aria-labelledby="categories-heading">
         <div className="container mx-auto max-w-7xl px-4">
-          {/* Section header — matches screenshot layout */}
           <div className="mb-10 flex items-end justify-between">
             <div>
               <p
                 className="mb-1 text-sm font-bold tracking-widest uppercase"
                 style={{ color: 'hsl(var(--color-primary))' }}
               >
-                Categories
+                Popular Categories
               </p>
               <h2 id="categories-heading" className="text-3xl font-extrabold sm:text-4xl">
-                Browse by Category
+                Shop by Category
               </h2>
             </div>
             <Link
               href="/categories"
               className="text-foreground hover:text-primary hidden items-center gap-1.5 text-sm font-semibold transition-all duration-200 hover:gap-3 sm:inline-flex"
             >
-              View All <ArrowRight className="h-4 w-4" />
+              All Categories <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredCategories.map((cat, i) => (
-              <CategoryCard key={cat.id} category={cat} priority={i < 3} />
+            {categoryProducts.map(({ category, products }, i) => (
+              <CategoryCardWithCarousel
+                key={category.id}
+                category={category}
+                products={products}
+                priority={i < 3}
+              />
             ))}
           </div>
 
-          {/* Mobile "View All" */}
           <div className="mt-8 text-center sm:hidden">
             <Link
               href="/categories"
               className="inline-flex items-center gap-2 text-sm font-semibold transition-all duration-200 hover:gap-3"
               style={{ color: 'hsl(var(--color-primary))' }}
             >
-              View All Categories <ArrowRight className="h-4 w-4" />
+              All Categories <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
@@ -236,6 +244,24 @@ export default function HomePage() {
         </section>
       )}
 
+      {/* ── Trusted Brands ───────────────────────────────────────────────── */}
+      <section className="py-16" aria-labelledby="brands-heading">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="mb-8 text-center">
+            <p
+              className="mb-1 text-sm font-bold tracking-widest uppercase"
+              style={{ color: 'hsl(var(--color-primary))' }}
+            >
+              Our Partners
+            </p>
+            <h2 id="brands-heading" className="text-3xl font-extrabold sm:text-4xl">
+              Trusted Brands We Carry
+            </h2>
+          </div>
+        </div>
+        <BrandsMarquee />
+      </section>
+
       {/* ── Why Urban Choice ─────────────────────────────────────────────── */}
       <section className="py-20" aria-labelledby="why-us-heading">
         <div className="container mx-auto max-w-7xl px-4">
@@ -290,7 +316,7 @@ export default function HomePage() {
 
             {/* Image */}
             <div className="relative">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl">
+              <div className="relative aspect-4/3 overflow-hidden rounded-2xl shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1487875961445-47a00398c267?w=800&q=80"
                   alt="Urban Choice building materials showroom Dubai"

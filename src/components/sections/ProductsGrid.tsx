@@ -66,7 +66,7 @@ export default function ProductsGrid({ products, category }: ProductsGridProps) 
         >
           {filteredProducts.map((product, index) => (
             <motion.div key={product.id} variants={item}>
-              <ProductCard product={product} priority={index < 4} />
+              <ProductCard product={product} priority={index < 4} noLink />
             </motion.div>
           ))}
         </motion.div>
