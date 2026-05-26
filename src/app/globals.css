@@ -63,29 +63,43 @@
   --color-ring: 33 100% 44%;
 }
 
-/* ─── Dark mode: very dark navy ─────────────────────────────────────────── */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: 215 50% 7%;
-    --color-foreground: 0 0% 96%;
-    --color-card: 215 45% 11%;
-    --color-card-foreground: 0 0% 96%;
-    --color-popover: 215 45% 11%;
-    --color-popover-foreground: 0 0% 96%;
-    --color-primary: 33 100% 44%;
-    --color-primary-foreground: 0 0% 100%;
-    --color-secondary: 215 40% 16%;
-    --color-secondary-foreground: 0 0% 92%;
-    --color-muted: 215 40% 16%;
-    --color-muted-foreground: 215 20% 60%;
-    --color-accent: 33 30% 20%;
-    --color-accent-foreground: 33 90% 72%;
-    --color-destructive: 0 62% 40%;
-    --color-destructive-foreground: 0 0% 100%;
-    --color-border: 215 40% 18%;
-    --color-input: 215 40% 18%;
-    --color-ring: 33 100% 44%;
-  }
+/* ─── Dark mode: activated via html.dark class ───────────────────────────── */
+html.dark {
+  --color-background: 215 50% 7%;
+  --color-foreground: 0 0% 96%;
+  --color-card: 215 45% 11%;
+  --color-card-foreground: 0 0% 96%;
+  --color-popover: 215 45% 11%;
+  --color-popover-foreground: 0 0% 96%;
+  --color-primary: 33 100% 44%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-secondary: 215 40% 16%;
+  --color-secondary-foreground: 0 0% 92%;
+  --color-muted: 215 40% 16%;
+  --color-muted-foreground: 215 20% 60%;
+  --color-accent: 33 30% 20%;
+  --color-accent-foreground: 33 90% 72%;
+  --color-destructive: 0 62% 40%;
+  --color-destructive-foreground: 0 0% 100%;
+  --color-border: 215 40% 18%;
+  --color-input: 215 40% 18%;
+  --color-ring: 33 100% 44%;
+}
+
+/* ─── Theme toggle icon visibility ──────────────────────────────────────── */
+/* Both icons are always in the DOM; CSS decides which one shows.            */
+.theme-icon-sun {
+  display: none;
+}
+.theme-icon-moon {
+  display: block;
+}
+
+html.dark .theme-icon-sun {
+  display: block;
+}
+html.dark .theme-icon-moon {
+  display: none;
 }
 
 /* ─── Base styles ────────────────────────────────────────────────────────── */

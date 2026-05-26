@@ -11,6 +11,7 @@ import { siteConfig } from '@/data/site-config';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/layout/Logo';
 import SearchDialog from '@/components/sections/SearchDialog';
+import ThemeToggle from '@/components/layout/ThemeToggle';
 import { generateWhatsAppUrl, generateTelUrl } from '@/lib/utils';
 import { trackWhatsAppClick, trackPhoneClick } from '@/lib/analytics';
 
@@ -139,6 +140,8 @@ export default function Header() {
             >
               <Search className="h-5 w-5" />
             </button>
+
+            <ThemeToggle />
 
             <Button
               asChild
