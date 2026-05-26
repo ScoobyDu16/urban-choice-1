@@ -9,6 +9,7 @@ import ProductsGrid from '@/components/sections/ProductsGrid';
 import JsonLd from '@/components/seo/JsonLd';
 import { generateCategorySchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { generatePageMetadata } from '@/lib/metadata';
+import CategoryViewTracker from '@/components/sections/CategoryViewTracker';
 
 export const revalidate = 3600;
 
@@ -48,6 +49,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
+      <CategoryViewTracker categoryId={category.id} categoryName={category.name} />
       <JsonLd data={generateCategorySchema(category)} id="category-schema" />
       <JsonLd
         data={generateBreadcrumbSchema([{ label: 'Home', href: '/' }, ...breadcrumbItems])}

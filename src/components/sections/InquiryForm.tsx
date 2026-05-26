@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { siteConfig } from '@/data/site-config';
 import { generateWhatsAppUrl } from '@/lib/utils';
 import { cn } from '@/lib/utils';
+import { trackInquirySubmit } from '@/lib/analytics';
 
 interface InquiryFormProps {
   productName?: string;
@@ -100,6 +101,7 @@ export default function InquiryForm({ productName, subject }: InquiryFormProps) 
     lines.push(`*Message:*`);
     lines.push(message);
 
+    trackInquirySubmit(productName);
     const waUrl = generateWhatsAppUrl(siteConfig.business.whatsapp, lines.join('\n'));
     window.open(waUrl, '_blank', 'noopener,noreferrer');
   }

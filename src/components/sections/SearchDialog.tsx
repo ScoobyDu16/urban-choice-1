@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { X, Search, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSearch } from '@/hooks/useSearch';
+import { trackSearch } from '@/lib/analytics';
 
 interface SearchDialogProps {
   open: boolean;
@@ -18,6 +19,10 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
   useEffect(() => {
     if (!open) clearSearch();
   }, [open, clearSearch]);
+
+  useEffect(() => {
+    if (query.length > 1) trackSearch(query, results.total);
+  }, [query, results.total]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
