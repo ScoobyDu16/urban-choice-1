@@ -141,7 +141,7 @@ export default function AboutPage() {
                   materials at competitive prices, backed by expert advice and reliable supply.
                 </p>
                 <p>
-                  Over the years, we have built an extensive catalogue spanning 10 product
+                  Over the years, we have built an extensive catalogue spanning multiple product
                   categories — safety items, sanitary ware, hardware, electrical supplies, plumbing
                   materials, building materials, fasteners, power tools, paints &amp; paint tools,
                   and packaging materials — covering every stage of a construction or fit-out
@@ -234,8 +234,8 @@ export default function AboutPage() {
           <div className="relative">
             <h2 className="text-3xl font-extrabold">Ready to Start Your Project?</h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-white/80">
-              Browse our full catalogue of 100+ products across 10 categories, or contact us for a
-              custom project quote. We respond within 2 business hours.
+              Browse our full catalogue of 100+ products across various categories, or contact us
+              for a custom project quote. We respond within 2 business hours.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button asChild size="xl" variant="secondary">

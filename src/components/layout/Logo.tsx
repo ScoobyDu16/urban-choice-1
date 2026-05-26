@@ -26,14 +26,16 @@ export function Logo({
 }: LogoProps) {
   const content = (
     <span className={cn('flex items-center gap-2.5', className)}>
-      <Image
-        src="/logo.jpg"
-        alt="Urban Choice Building Materials"
-        height={height}
-        width={height}
-        className="object-contain"
-        priority
-      />
+      <span className="flex items-center justify-center overflow-hidden rounded-lg bg-white p-0.5">
+        <Image
+          src="/logo.png"
+          alt="Urban Choice Building Materials"
+          height={height}
+          width={height}
+          className="object-contain"
+          priority
+        />
+      </span>
       {!markOnly && (
         <span
           className={cn(
@@ -63,14 +65,16 @@ export function Logo({
 /** Alias: just the logo image mark */
 export function LogoMark({ size = 36, className }: { size?: number; className?: string }) {
   return (
-    <Image
-      src="/logo.jpg"
-      alt="Urban Choice"
-      height={size}
-      width={size}
-      className={cn('object-contain', className)}
-      priority
-    />
+    <span className="flex items-center justify-center overflow-hidden rounded-lg bg-white p-0.5">
+      <Image
+        src="/logo.png"
+        alt="Urban Choice"
+        height={size}
+        width={size}
+        className={cn('object-contain', className)}
+        priority
+      />
+    </span>
   );
 }
 

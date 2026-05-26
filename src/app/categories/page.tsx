@@ -35,7 +35,7 @@ export default function CategoriesPage() {
         </p>
         <h1 className="text-3xl font-extrabold sm:text-4xl">Product Categories</h1>
         <p className="text-muted-foreground mt-3">
-          Browse {categories.length} categories to find exactly what you&apos;re looking for.
+          Browse categories to find exactly what you&apos;re looking for.
         </p>
       </div>
 

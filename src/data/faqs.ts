@@ -26,7 +26,7 @@ export const faqs: FAQ[] = [
     id: 'faq-004',
     question: 'Are your products compliant with Dubai Municipality standards?',
     answer:
-      'Yes. All products we supply — including safety items, sanitary ware, electrical items, plumbing pipes, power tools, building materials, and paints — comply with applicable Dubai Municipality and UAE standards. We source from established, reputable manufacturers across all 10 categories.',
+      'Yes. All products we supply — including safety items, sanitary ware, electrical items, plumbing pipes, power tools, building materials, and paints — comply with applicable Dubai Municipality and UAE standards. We source from established, reputable manufacturers across all our product categories.',
     category: 'products',
   },
   {

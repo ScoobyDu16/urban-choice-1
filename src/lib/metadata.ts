@@ -37,6 +37,11 @@ export function generateBaseMetadata(): Metadata {
       google: siteConfig.integrations.googleSearchConsoleVerification,
     },
     alternates: { canonical: business.url },
+    icons: {
+      icon: '/logo.png',
+      shortcut: '/logo.png',
+      apple: '/logo.png',
+    },
   };
 }
 

@@ -6,7 +6,7 @@ export const siteConfig: SiteConfig = {
     legalName: 'Urban Choice Building Materials Trading',
     tagline: 'Your Trusted Building Materials Partner in Dubai',
     description:
-      'Urban Choice is a leading building materials supplier in Dubai, UAE. We supply high-quality construction materials across 10 categories — safety items, sanitary ware, hardware, electrical supplies, plumbing, building materials, fasteners, power tools, paints, and packaging materials. With years of experience in the industry, we have built a reputation for reliability, quality products, and exceptional customer service.',
+      'Urban Choice is a leading building materials supplier in Dubai, UAE. We supply high-quality construction materials across a wide range of categories — safety items, sanitary ware, hardware, electrical supplies, plumbing, building materials, fasteners, power tools, paints, and packaging materials. We have built a reputation for reliability, quality products, and exceptional customer service.',
     logo: '/images/logo.svg',
     favicon: '/favicon.ico',
     url: 'https://urbanchoicebmt.com',
@@ -34,7 +34,7 @@ export const siteConfig: SiteConfig = {
       instagram: 'https://instagram.com/urbanchoicebmt',
     },
     businessHours: [{ days: 'Monday – Saturday', hours: '8:30 AM – 6:00 PM' }],
-    founded: '2015',
+    founded: '2024',
   },
   seo: {
     defaultTitle: 'Urban Choice Building Materials Trading – Dubai, UAE',

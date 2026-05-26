@@ -282,7 +282,7 @@ export default function HomePage() {
               </p>
               <ul className="mt-6 space-y-3">
                 {[
-                  '10 product categories covering every stage of construction and fit-out',
+                  'Multiple product categories covering every stage of construction and fit-out',
                   'Safety items, sanitary ware, electrical, plumbing, power tools, and more',
                   'Dubai Municipality compliant products across all categories',
                   'Competitive pricing for bulk orders and ongoing projects',
@@ -404,8 +404,8 @@ export default function HomePage() {
               <span className="text-primary">Delivered to Your Site</span>
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-              Browse our full catalogue of 100+ products across 10 categories, or contact us for a
-              custom project quote. Our team responds within 2 business hours.
+              Browse our full catalogue of 100+ products across various categories, or contact us
+              for a custom project quote. Our team responds within 2 business hours.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Button
