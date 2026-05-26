@@ -65,13 +65,13 @@ export function generateProductSchema(product: Product) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: product.schema.name,
-    description: product.schema.description,
+    name: product.schema?.name ?? product.name,
+    description: product.schema?.description ?? product.shortDescription,
     image: product.images.map((i) => i.url),
-    sku: product.schema.sku,
+    sku: product.schema?.sku,
     brand: {
       '@type': 'Brand',
-      name: product.schema.brand || business.name,
+      name: product.schema?.brand || business.name,
     },
     offers: {
       '@type': 'Offer',

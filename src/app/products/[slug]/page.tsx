@@ -66,7 +66,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const schemas = [
     generateProductSchema(product),
     generateBreadcrumbSchema([{ label: 'Home', href: '/' }, ...breadcrumbItems]),
-    ...(product.faqs.length > 0 ? [generateFaqSchema(product.faqs)] : []),
+    ...(product.faqs && product.faqs.length > 0 ? [generateFaqSchema(product.faqs)] : []),
   ];
 
   return (
@@ -147,7 +147,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2">
-              {product.tags.map((tag) => (
+              {(product.tags ?? []).map((tag) => (
                 <Badge key={tag} variant="secondary">
                   {tag}
                 </Badge>
@@ -196,7 +196,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 Product Description
               </h2>
               <div className="prose prose-sm text-muted-foreground max-w-none">
-                {product.fullDescription.split('\n\n').map((para, i) => (
+                {(product.fullDescription ?? '').split('\n\n').map((para, i) => (
                   <p key={i} className="mb-4 leading-relaxed">
                     {para}
                   </p>
@@ -205,7 +205,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </section>
 
             {/* Specifications */}
-            {product.specifications.length > 0 && (
+            {(product.specifications ?? []).length > 0 && (
               <section aria-labelledby="specs-heading">
                 <h2 id="specs-heading" className="mb-4 text-2xl font-bold">
                   Specifications
@@ -213,7 +213,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <div className="overflow-hidden rounded-xl border">
                   <table className="w-full text-sm" aria-label="Product specifications">
                     <tbody>
-                      {product.specifications.map((spec, i) => (
+                      {(product.specifications ?? []).map((spec, i) => (
                         <tr key={i} className={i % 2 === 0 ? 'bg-muted/30' : ''}>
                           <td className="w-2/5 px-4 py-3 font-medium">{spec.label}</td>
                           <td className="text-muted-foreground px-4 py-3">{spec.value}</td>
@@ -226,12 +226,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             )}
 
             {/* Product FAQs */}
-            {product.faqs.length > 0 && (
+            {(product.faqs ?? []).length > 0 && (
               <section aria-labelledby="product-faq-heading">
                 <h2 id="product-faq-heading" className="mb-4 text-2xl font-bold">
                   Questions & Answers
                 </h2>
-                <FaqAccordion faqs={product.faqs} />
+                <FaqAccordion faqs={product.faqs ?? []} />
               </section>
             )}
           </div>

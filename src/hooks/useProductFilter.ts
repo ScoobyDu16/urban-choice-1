@@ -21,7 +21,7 @@ export function useProductFilter(initialProducts: Product[], initialSearchQuery 
           p.name.toLowerCase().includes(q) ||
           p.shortDescription.toLowerCase().includes(q) ||
           p.category.toLowerCase().includes(q) ||
-          p.tags.some((t) => t.toLowerCase().includes(q)),
+          (p.tags ?? []).some((t) => t.toLowerCase().includes(q)),
       );
     }
 
@@ -44,7 +44,11 @@ export function useProductFilter(initialProducts: Product[], initialSearchQuery 
         filtered.sort((a, b) => b.name.localeCompare(a.name));
         break;
       case 'newest':
-        filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        filtered.sort(
+          (a, b) =>
+            (b.createdAt ? new Date(b.createdAt).getTime() : 0) -
+            (a.createdAt ? new Date(a.createdAt).getTime() : 0),
+        );
         break;
     }
 
