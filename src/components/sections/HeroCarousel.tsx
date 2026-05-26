@@ -57,12 +57,12 @@ export default function HeroCarousel({ banners }: HeroCarouselProps) {
                   className="object-cover"
                 />
                 {/* Dark overlay with orange-tinted gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/70 to-slate-900/40" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-900/70 to-slate-900/40" />
+                <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent" />
               </div>
 
               {/* Content */}
-              <div className="relative container mx-auto max-w-7xl px-4 py-28 lg:py-40">
+              <div className="relative container mx-auto max-w-7xl px-4 py-14 sm:py-20 lg:py-40">
                 <div className="max-w-2xl">
                   <motion.div
                     key={`content-${banner.id}`}
