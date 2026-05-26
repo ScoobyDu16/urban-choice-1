@@ -21,12 +21,12 @@ export function Logo({
   textSize = 'text-xl',
   className,
   href = '/',
-  height = 40,
+  height = 56,
   light = false,
 }: LogoProps) {
   const content = (
     <span className={cn('flex items-center gap-2.5', className)}>
-      <span className="flex items-center justify-center overflow-hidden rounded-lg bg-white p-0.5">
+      <span className="flex items-center justify-center overflow-hidden rounded-md bg-white">
         <Image
           src="/logo.png"
           alt="Urban Choice Building Materials"
@@ -63,7 +63,7 @@ export function Logo({
 }
 
 /** Alias: just the logo image mark */
-export function LogoMark({ size = 36, className }: { size?: number; className?: string }) {
+export function LogoMark({ size = 52, className }: { size?: number; className?: string }) {
   return (
     <span className="flex items-center justify-center overflow-hidden rounded-lg bg-white p-0.5">
       <Image
