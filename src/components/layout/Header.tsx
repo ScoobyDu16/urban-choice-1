@@ -193,10 +193,14 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 320, damping: 32 }}
-              className="bg-background fixed top-0 right-0 z-70 flex h-full w-[min(320px,90vw)] flex-col shadow-2xl md:hidden"
+              className="fixed top-0 right-0 z-70 flex h-full w-[min(320px,90vw)] flex-col shadow-2xl md:hidden"
+              style={{ backgroundColor: 'hsl(var(--color-background))' }}
             >
               {/* Drawer header */}
-              <div className="bg-primary flex items-center justify-between border-b px-5 py-4">
+              <div
+                className="flex items-center justify-between border-b px-5 py-4"
+                style={{ backgroundColor: 'hsl(215 50% 9%)' }}
+              >
                 <Logo textSize="text-base" href="/" light />
                 <button
                   onClick={() => setDrawerOpen(false)}
