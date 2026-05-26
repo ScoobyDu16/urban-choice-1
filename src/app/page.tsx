@@ -325,17 +325,6 @@ export default function HomePage() {
                   className="object-cover"
                 />
               </div>
-              {/* Floating accent card */}
-              <div
-                className="absolute -bottom-5 -left-5 rounded-xl p-5 text-white shadow-lg"
-                style={{
-                  backgroundColor: 'hsl(var(--color-primary))',
-                  boxShadow: '0 10px 25px hsl(var(--color-primary) / 0.40)',
-                }}
-              >
-                <p className="text-3xl font-extrabold">10+</p>
-                <p className="text-sm font-medium text-white/90">Years of Experience</p>
-              </div>
             </div>
           </div>
         </div>

@@ -97,14 +97,15 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="group flex items-start gap-3"
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 transition-colors group-hover:bg-green-200 dark:bg-green-900/30">
-                <MessageCircle className="h-5 w-5 text-green-600" />
+              <div
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors"
+                style={{ backgroundColor: 'hsl(var(--color-primary) / 0.10)' }}
+              >
+                <MessageCircle className="text-primary h-5 w-5" />
               </div>
               <div>
                 <p className="text-muted-foreground text-xs">WhatsApp</p>
-                <p className="font-medium text-green-600 transition-colors group-hover:text-green-700">
-                  Chat Now
-                </p>
+                <p className="group-hover:text-primary font-medium transition-colors">Chat Now</p>
               </div>
             </a>
 

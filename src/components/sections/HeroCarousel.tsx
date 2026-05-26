@@ -107,7 +107,7 @@ export default function HeroCarousel({ banners }: HeroCarouselProps) {
                     <Button
                       asChild
                       size="xl"
-                      className="bg-primary hover:bg-primary/90 shadow-primary/30 text-white shadow-lg"
+                      className="bg-primary shadow-primary/30 text-white shadow-lg transition-all hover:scale-105 hover:opacity-90"
                       onClick={() => trackCtaClick(banner.ctaText, banner.ctaUrl)}
                     >
                       <Link href={banner.ctaUrl}>

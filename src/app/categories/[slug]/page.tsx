@@ -73,9 +73,6 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         <div className="relative container mx-auto max-w-7xl px-4 py-20">
           <Breadcrumb items={breadcrumbItems} light />
           <div className="mt-4 max-w-2xl">
-            <p className="text-primary mb-2 text-sm font-bold tracking-widest uppercase">
-              {category.name}
-            </p>
             <h1 className="text-3xl font-extrabold text-white sm:text-4xl">{category.name}</h1>
             <div className="bg-primary mt-3 h-1 w-12 rounded-full" />
             <p className="mt-4 text-lg text-slate-300">{category.description}</p>

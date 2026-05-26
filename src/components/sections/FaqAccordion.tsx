@@ -20,10 +20,18 @@ export default function FaqAccordion({ faqs, className }: FaqAccordionProps) {
         <Accordion.Item
           key={'id' in faq ? faq.id : index}
           value={String(index)}
-          className="bg-card overflow-hidden rounded-lg border"
+          className="bg-card overflow-hidden rounded-lg border transition-all duration-200"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = 'hsl(var(--color-primary) / 0.45)';
+            e.currentTarget.style.boxShadow = '0 1px 6px hsl(var(--color-primary) / 0.12)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = '';
+            e.currentTarget.style.boxShadow = '';
+          }}
         >
           <Accordion.Header>
-            <Accordion.Trigger className="hover:bg-accent/50 [&[data-state=open]]:text-primary group flex w-full items-center justify-between px-5 py-4 text-left text-sm font-medium transition-colors">
+            <Accordion.Trigger className="hover:text-primary [&[data-state=open]]:text-primary group flex w-full items-center justify-between px-5 py-4 text-left text-sm font-medium transition-colors">
               <span>{faq.question}</span>
               <ChevronDown
                 className="text-muted-foreground h-4 w-4 shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180"

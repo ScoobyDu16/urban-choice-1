@@ -18,39 +18,52 @@ interface InquiryFormProps {
 interface FormErrors {
   name?: string;
   email?: string;
+  phone?: string;
   subject?: string;
   message?: string;
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// UAE numbers: 05x-xxxxxxx (mobile) or 04-xxxxxxx (landline), with optional +971 / 00971 prefix
+const UAE_PHONE_RE = /^(\+971|00971|0)(5[024568]\d{7}|[234679]\d{7})$/;
 
 function validate(fields: {
   name: string;
   email: string;
+  phone: string;
   subject: string;
   message: string;
 }): FormErrors {
   const errors: FormErrors = {};
 
-  if (!fields.name) {
+  if (!fields.name.trim()) {
     errors.name = 'Full name is required.';
-  } else if (fields.name.length < 2) {
+  } else if (fields.name.trim().length < 2) {
     errors.name = 'Name must be at least 2 characters.';
   }
 
-  if (!fields.email) {
+  if (!fields.email.trim()) {
     errors.email = 'Email address is required.';
-  } else if (!EMAIL_RE.test(fields.email)) {
+  } else if (!EMAIL_RE.test(fields.email.trim())) {
     errors.email = 'Please enter a valid email address.';
   }
 
-  if (!fields.subject) {
-    errors.subject = 'Subject is required.';
+  if (fields.phone.trim()) {
+    const normalised = fields.phone.trim().replace(/[\s\-()]/g, '');
+    if (!UAE_PHONE_RE.test(normalised)) {
+      errors.phone = 'Please enter a valid UAE number (e.g. 050 123 4567 or 04 123 4567).';
+    }
   }
 
-  if (!fields.message) {
+  if (!fields.subject.trim()) {
+    errors.subject = 'Subject is required.';
+  } else if (fields.subject.trim().length < 3) {
+    errors.subject = 'Subject must be at least 3 characters.';
+  }
+
+  if (!fields.message.trim()) {
     errors.message = 'Message is required.';
-  } else if (fields.message.length < 10) {
+  } else if (fields.message.trim().length < 10) {
     errors.message = 'Message must be at least 10 characters.';
   }
 
@@ -60,9 +73,23 @@ function validate(fields: {
 export default function InquiryForm({ productName, subject }: InquiryFormProps) {
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const formRef = React.useRef<HTMLFormElement>(null);
 
-  function handleBlur(field: string) {
+  function handleBlur(field: keyof FormErrors) {
     setTouched((prev) => ({ ...prev, [field]: true }));
+
+    // Validate just this field on blur using current form values
+    const form = formRef.current;
+    if (!form) return;
+    const data = new FormData(form);
+    const allErrors = validate({
+      name: (data.get('name') as string) ?? '',
+      email: (data.get('email') as string) ?? '',
+      phone: (data.get('phone') as string) ?? '',
+      subject: (data.get('subject') as string) ?? '',
+      message: (data.get('message') as string) ?? '',
+    });
+    setErrors((prev) => ({ ...prev, [field]: allErrors[field] }));
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -78,12 +105,11 @@ export default function InquiryForm({ productName, subject }: InquiryFormProps) 
     const subj = (data.get('subject') as string).trim();
     const message = (data.get('message') as string).trim();
 
-    const validationErrors = validate({ name, email, subject: subj, message });
+    const validationErrors = validate({ name, email, phone, subject: subj, message });
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      // Mark all required fields as touched so errors are visible
-      setTouched({ name: true, email: true, subject: true, message: true });
+      setTouched({ name: true, email: true, phone: true, subject: true, message: true });
       return;
     }
 
@@ -110,7 +136,7 @@ export default function InquiryForm({ productName, subject }: InquiryFormProps) 
     cn(touched[field] && errors[field] ? 'border-red-500 focus-visible:ring-red-500' : '');
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-4">
+    <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-4">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Name */}
         <div className="space-y-1.5">
@@ -150,7 +176,15 @@ export default function InquiryForm({ productName, subject }: InquiryFormProps) 
           <label htmlFor="inquiry-phone" className="text-sm font-medium">
             Phone Number
           </label>
-          <Input id="inquiry-phone" name="phone" type="tel" placeholder="+971 50 000 0000" />
+          <Input
+            id="inquiry-phone"
+            name="phone"
+            type="tel"
+            placeholder="+971 50 000 0000"
+            className={fieldClass('phone')}
+            onBlur={() => handleBlur('phone')}
+          />
+          {touched.phone && errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
         </div>
 
         {/* Company (optional) */}
@@ -207,10 +241,6 @@ export default function InquiryForm({ productName, subject }: InquiryFormProps) 
         <MessageCircle className="h-5 w-5" />
         Send via WhatsApp
       </Button>
-
-      <p className="text-muted-foreground text-center text-xs">
-        Clicking the button will open WhatsApp with your message pre-filled — just hit send.
-      </p>
     </form>
   );
 }

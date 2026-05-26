@@ -140,10 +140,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* Availability */}
-            <div className="flex items-center gap-3">
-              <Package className="text-muted-foreground h-4 w-4" />
-              <span className={cn('font-medium', availColor)}>{availLabel}</span>
-            </div>
+            {siteConfig.features.showAvailability && (
+              <div className="flex items-center gap-3">
+                <Package className="text-muted-foreground h-4 w-4" />
+                <span className={cn('font-medium', availColor)}>{availLabel}</span>
+              </div>
+            )}
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2">

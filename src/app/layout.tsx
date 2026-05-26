@@ -9,6 +9,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import { generateBaseMetadata } from '@/lib/metadata';
 import { generateOrganizationSchema, generateWebsiteSchema } from '@/lib/schema';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
+import BackToTop from '@/components/ui/BackToTop';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
           <Footer />
           <WhatsAppFab />
+          <BackToTop />
         </ThemeProvider>
       </body>
     </html>

@@ -238,7 +238,11 @@ export default function AboutPage() {
               for a custom project quote. We respond within 2 business hours.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button asChild size="xl" variant="secondary">
+              <Button
+                asChild
+                size="xl"
+                className="bg-white font-semibold text-orange-600 transition-all hover:scale-105 hover:bg-white/90"
+              >
                 <Link href="/products">
                   Browse Products <ArrowRight className="h-5 w-5" />
                 </Link>

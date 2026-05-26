@@ -154,6 +154,13 @@ select option {
   font-style: italic;
 }
 
+/* ─── Input / Textarea / Select hover ───────────────────────────────────── */
+input:not(:disabled):not(:focus-visible):hover,
+textarea:not(:disabled):not(:focus-visible):hover,
+select:not(:disabled):hover {
+  border-color: hsl(var(--color-primary) / 0.5);
+}
+
 /* ─── Accordion animations ───────────────────────────────────────────────── */
 @keyframes accordion-down {
   from {

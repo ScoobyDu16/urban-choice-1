@@ -170,7 +170,7 @@ export default function SearchDialog({ open, onClose }: SearchDialogProps) {
                         {results.products.map((product) => (
                           <Link
                             key={product.id}
-                            href={`/products?q=${encodeURIComponent(product.name)}`}
+                            href={`/products/${product.slug}`}
                             onClick={onClose}
                             className="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors"
                             style={{ color: 'hsl(var(--color-foreground))' }}

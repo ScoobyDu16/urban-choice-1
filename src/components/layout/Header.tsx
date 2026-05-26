@@ -51,7 +51,7 @@ export default function Header() {
       <header
         className={cn(
           'sticky top-0 z-50 w-full transition-all duration-300',
-          scrolled ? 'supports-[backdrop-filter]:bg-opacity-95 shadow-lg backdrop-blur' : '',
+          scrolled ? 'supports-backdrop-filter:bg-opacity-95 shadow-lg backdrop-blur' : '',
         )}
         style={{ backgroundColor: 'hsl(215 50% 9%)' }}
         role="banner"
@@ -71,7 +71,7 @@ export default function Header() {
             <div className="flex items-center gap-4">
               <a
                 href={generateTelUrl(business.phone)}
-                className="flex items-center gap-1 text-white/90 transition-colors hover:text-white"
+                className="flex items-center gap-1 text-white/90 transition-colors hover:text-white hover:underline"
                 onClick={() => trackPhoneClick('header-topbar')}
                 aria-label={`Call us at ${business.phone}`}
               >
@@ -81,7 +81,7 @@ export default function Header() {
               {business.mobile && (
                 <a
                   href={generateTelUrl(business.mobile)}
-                  className="flex items-center gap-1 text-white/90 transition-colors hover:text-white"
+                  className="flex items-center gap-1 text-white/90 transition-colors hover:text-white hover:underline"
                   onClick={() => trackPhoneClick('header-topbar-mobile')}
                   aria-label={`Call us at ${business.mobile}`}
                 >
@@ -108,7 +108,7 @@ export default function Header() {
         </div>
 
         {/* ── Main nav ─────────────────────────────────────────────────── */}
-        <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+        <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 py-10 md:py-0">
           <Logo textSize="text-lg" light />
 
           {/* Desktop nav */}
@@ -177,7 +177,7 @@ export default function Header() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-60 bg-black/50 backdrop-blur-sm md:hidden"
               onClick={() => setDrawerOpen(false)}
               aria-hidden="true"
             />
@@ -193,7 +193,7 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 320, damping: 32 }}
-              className="bg-background fixed top-0 right-0 z-[70] flex h-full w-[min(320px,90vw)] flex-col shadow-2xl md:hidden"
+              className="bg-background fixed top-0 right-0 z-70 flex h-full w-[min(320px,90vw)] flex-col shadow-2xl md:hidden"
             >
               {/* Drawer header */}
               <div className="bg-primary flex items-center justify-between border-b px-5 py-4">
@@ -285,7 +285,7 @@ export default function Header() {
                   </a>
                   <Link
                     href="/contact"
-                    className="bg-primary hover:bg-primary/90 flex items-center justify-center gap-2 rounded-xl px-3 py-2.5 text-sm font-semibold text-white transition-colors"
+                    className="border-border bg-background text-foreground hover:bg-accent flex items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-medium transition-colors"
                   >
                     Get a Quote
                   </Link>

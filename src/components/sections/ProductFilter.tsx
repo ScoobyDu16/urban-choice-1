@@ -13,10 +13,9 @@ interface ProductFilterProps {
   totalProducts: number;
 }
 
-const selectStyle: React.CSSProperties = {
+const selectBaseStyle: React.CSSProperties = {
   backgroundColor: 'hsl(var(--color-background))',
   color: 'hsl(var(--color-foreground))',
-  borderColor: 'hsl(var(--color-border))',
 };
 
 export default function ProductFilter({
@@ -29,6 +28,7 @@ export default function ProductFilter({
   // Local value drives the visible input; debounced propagation updates the filter
   const [inputValue, setInputValue] = useState(searchQuery);
   const [focused, setFocused] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Always holds the latest value so the setTimeout callback is never stale
   const latestRef = useRef(searchQuery);
@@ -51,12 +51,18 @@ export default function ProductFilter({
     <div className="flex flex-wrap items-center gap-3">
       {/* Search input */}
       <div
-        className="flex min-w-0 flex-1 items-center gap-2 rounded-lg border px-3 py-2.5 transition-all duration-150"
+        className="flex w-full min-w-0 items-center gap-2 rounded-lg border px-3 py-2.5 transition-all duration-150 sm:flex-1"
         style={{
           backgroundColor: 'hsl(var(--color-background))',
-          borderColor: focused ? 'hsl(var(--color-primary))' : 'hsl(var(--color-border))',
+          borderColor: focused
+            ? 'hsl(var(--color-primary))'
+            : hovered
+              ? 'hsl(var(--color-primary) / 0.5)'
+              : 'hsl(var(--color-border))',
           boxShadow: focused ? '0 0 0 3px hsl(var(--color-primary) / 0.15)' : 'none',
         }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
         <Search
           className="h-4 w-4 shrink-0 transition-colors"
@@ -90,12 +96,18 @@ export default function ProductFilter({
       <select
         value={sortBy}
         onChange={(e) => setSortBy(e.target.value as SortOption)}
-        className="cursor-pointer rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors outline-none"
-        style={selectStyle}
+        className="flex-1 cursor-pointer rounded-lg border px-3 py-2.5 text-sm font-medium transition-all outline-none sm:flex-none"
+        style={selectBaseStyle}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = 'hsl(var(--color-primary) / 0.5)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = '';
+        }}
         aria-label="Sort products"
       >
         {SORT_OPTIONS.map((opt) => (
-          <option key={opt.value} value={opt.value} style={selectStyle}>
+          <option key={opt.value} value={opt.value} style={selectBaseStyle}>
             {opt.label}
           </option>
         ))}

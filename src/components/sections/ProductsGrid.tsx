@@ -115,7 +115,7 @@ export default function ProductsGrid({ products, initialSearchQuery = '' }: Prod
           >
             {visibleProducts.map((product, index) => (
               <motion.div key={product.id} variants={item}>
-                <ProductCard product={product} priority={index < 4} noLink />
+                <ProductCard product={product} priority={index < 4} />
               </motion.div>
             ))}
           </motion.div>

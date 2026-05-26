@@ -43,8 +43,8 @@ export default function Breadcrumb({ items, light = false }: BreadcrumbProps) {
                     className={cn(
                       'flex items-center gap-1 transition-colors',
                       light
-                        ? 'text-white/60 hover:text-white'
-                        : 'text-muted-foreground hover:text-foreground',
+                        ? 'text-white/60 hover:text-white hover:underline'
+                        : 'text-muted-foreground hover:text-foreground hover:underline',
                     )}
                     itemProp="item"
                     aria-label="Home"
@@ -68,8 +68,8 @@ export default function Breadcrumb({ items, light = false }: BreadcrumbProps) {
                     className={cn(
                       'transition-colors',
                       light
-                        ? 'text-white/60 hover:text-white'
-                        : 'text-muted-foreground hover:text-foreground',
+                        ? 'text-white/60 hover:text-white hover:underline'
+                        : 'text-muted-foreground hover:text-foreground hover:underline',
                     )}
                     itemProp="item"
                   >

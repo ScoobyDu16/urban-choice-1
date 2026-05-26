@@ -105,14 +105,18 @@ export default function CategoryCardWithCarousel({
             {/* Slides 1–3 — Products */}
             {displayProducts.map((product) => (
               <div key={product.id} className="w-full flex-none">
-                <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+                <Link
+                  href={`/products/${product.slug}`}
+                  className="relative block aspect-[4/3] overflow-hidden bg-slate-100"
+                  aria-label={`View ${product.name}`}
+                >
                   {product.thumbnail.url ? (
                     <Image
                       src={product.thumbnail.url}
                       alt={product.thumbnail.alt}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 hover:scale-105"
                       placeholder="blur"
                       blurDataURL={BLUR_PLACEHOLDER}
                     />
@@ -134,13 +138,16 @@ export default function CategoryCardWithCarousel({
                       <span className="text-xs font-medium text-slate-400">Coming soon</span>
                     </div>
                   )}
-                </div>
-                <div className="px-4 pt-3 pb-2">
+                </Link>
+                <Link
+                  href={`/products/${product.slug}`}
+                  className="block px-4 pt-3 pb-2 transition-opacity hover:opacity-80"
+                >
                   <p className="line-clamp-1 text-sm leading-snug font-bold">{product.name}</p>
                   <p className="text-muted-foreground mt-0.5 line-clamp-2 text-xs leading-relaxed">
                     {product.shortDescription}
                   </p>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
