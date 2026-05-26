@@ -11,13 +11,13 @@ export const banners: Banner[] = [
     secondaryCtaText: 'Chat on WhatsApp',
     secondaryCtaUrl: '/contact',
     image: {
-      url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85',
+      url: '/banners/warehouse-site.png',
       alt: 'Modern construction site with building materials in Dubai',
       width: 1600,
       height: 900,
     },
     mobileImage: {
-      url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=768&q=80',
+      url: '/banners/warehouse-site.png',
       alt: 'Modern construction site with building materials in Dubai',
       width: 768,
       height: 900,
@@ -34,13 +34,13 @@ export const banners: Banner[] = [
     secondaryCtaText: 'Get a Quote',
     secondaryCtaUrl: '/contact',
     image: {
-      url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=85',
+      url: '/banners/safety-equipment.png',
       alt: 'Safety equipment and PPE for construction sites in Dubai',
       width: 1600,
       height: 900,
     },
     mobileImage: {
-      url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=768&q=80',
+      url: '/banners/safety-equipment.png',
       alt: 'Safety equipment and PPE',
       width: 768,
       height: 900,
@@ -57,13 +57,13 @@ export const banners: Banner[] = [
     secondaryCtaText: 'Contact Us',
     secondaryCtaUrl: '/contact',
     image: {
-      url: 'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=1600&q=85',
+      url: '/banners/paint-cans.png',
       alt: 'Paint cans and brushes for interior and exterior painting in Dubai',
       width: 1600,
       height: 900,
     },
     mobileImage: {
-      url: 'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=768&q=80',
+      url: '/banners/paint-cans.png',
       alt: 'Premium interior and exterior paints',
       width: 768,
       height: 900,

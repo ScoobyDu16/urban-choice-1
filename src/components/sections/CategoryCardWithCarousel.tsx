@@ -17,12 +17,19 @@ interface CategoryCardWithCarouselProps {
   priority?: boolean;
 }
 
+const BLUR_PLACEHOLDER =
+  'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAACAwEA/8QAHhAAAgIBBQEAAAAAAAAAAAAAAAECAxESMSH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoN8LK1OjW7T2ixI2bBPLsAAAAAAAAA/9k=';
+
 export default function CategoryCardWithCarousel({
   category,
   products,
   priority = false,
 }: CategoryCardWithCarouselProps) {
   const { business } = siteConfig;
+
+  const displayProducts = products.slice(0, 3);
+  // slides: [0] = category, [1..3] = products
+  const totalSlides = 1 + displayProducts.length;
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start', slidesToScroll: 1 }, [
     Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true }),
@@ -44,50 +51,61 @@ export default function CategoryCardWithCarousel({
     };
   }, [emblaApi]);
 
-  if (products.length === 0) return null;
+  if (displayProducts.length === 0) return null;
 
-  const currentProduct = products[currentIndex] ?? products[0];
-  const whatsappMsg = `Hi, I would like to inquire about: ${currentProduct.name}`;
+  // WhatsApp message depends on active slide
+  const whatsappMsg =
+    currentIndex === 0
+      ? `Hi, I would like to inquire about: ${category.name}`
+      : `Hi, I would like to inquire about: ${displayProducts[currentIndex - 1]?.name ?? category.name}`;
+
+  const whatsappLabel =
+    currentIndex === 0
+      ? `Inquire about ${category.name} on WhatsApp`
+      : `Inquire about ${displayProducts[currentIndex - 1]?.name} on WhatsApp`;
 
   return (
     <div className="group border-border bg-card flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:shadow-lg">
-      {/* Category header image */}
-      <Link
-        href={`/categories/${category.slug}`}
-        className="relative block h-28 overflow-hidden"
-        tabIndex={-1}
-        aria-hidden="true"
-      >
-        <Image
-          src={category.image.url}
-          alt={category.image.alt}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          priority={priority}
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAACAwEA/8QAHhAAAgIBBQEAAAAAAAAAAAAAAAECAxESMSH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoN8LK1OjW7T2ixI2bBPLsAAAAAAAAA/9k="
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
-        <div className="absolute right-0 bottom-0 left-0 flex items-center justify-between px-4 pb-3">
-          <h3 className="text-base leading-tight font-extrabold text-white">{category.name}</h3>
-          <span
-            className="flex items-center gap-1 text-xs font-semibold"
-            style={{ color: 'hsl(var(--color-primary))' }}
-          >
-            View All <ArrowRight className="h-3 w-3" />
-          </span>
-        </div>
-      </Link>
-
-      {/* Mini product carousel */}
-      <div className="relative px-2 pt-3 pb-2">
+      {/* Combined carousel: category image first, then products */}
+      <div className="relative">
         <div ref={emblaRef} className="overflow-hidden">
           <div className="flex">
-            {products.map((product) => (
+            {/* Slide 0 — Category image */}
+            <div className="w-full flex-none">
+              <Link
+                href={`/categories/${category.slug}`}
+                className="relative block aspect-[4/3] overflow-hidden bg-slate-100"
+                aria-label={`Browse all ${category.name}`}
+              >
+                <Image
+                  src={category.image.url}
+                  alt={category.image.alt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  priority={priority}
+                  placeholder="blur"
+                  blurDataURL={BLUR_PLACEHOLDER}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute right-0 bottom-0 left-0 px-4 pb-4">
+                  <h3 className="text-lg leading-tight font-extrabold text-white">
+                    {category.name}
+                  </h3>
+                  <span
+                    className="mt-1 inline-flex items-center gap-1 text-xs font-semibold"
+                    style={{ color: 'hsl(var(--color-primary))' }}
+                  >
+                    View All <ArrowRight className="h-3 w-3" />
+                  </span>
+                </div>
+              </Link>
+            </div>
+
+            {/* Slides 1–3 — Products */}
+            {displayProducts.map((product) => (
               <div key={product.id} className="w-full flex-none">
-                {/* Product image */}
-                <div className="relative mx-2 aspect-[4/3] overflow-hidden rounded-xl bg-slate-100">
+                <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                   {product.thumbnail.url ? (
                     <Image
                       src={product.thumbnail.url}
@@ -95,6 +113,8 @@ export default function CategoryCardWithCarousel({
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover"
+                      placeholder="blur"
+                      blurDataURL={BLUR_PLACEHOLDER}
                     />
                   ) : (
                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-slate-100">
@@ -115,9 +135,7 @@ export default function CategoryCardWithCarousel({
                     </div>
                   )}
                 </div>
-
-                {/* Product info */}
-                <div className="px-2 pt-2 pb-1">
+                <div className="px-4 pt-3 pb-2">
                   <p className="line-clamp-1 text-sm leading-snug font-bold">{product.name}</p>
                   <p className="text-muted-foreground mt-0.5 line-clamp-2 text-xs leading-relaxed">
                     {product.shortDescription}
@@ -128,44 +146,44 @@ export default function CategoryCardWithCarousel({
           </div>
         </div>
 
-        {/* Carousel nav buttons */}
+        {/* Prev / Next arrows */}
         <button
           onClick={scrollPrev}
-          className="bg-card absolute top-1/2 left-0 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border shadow transition-all hover:scale-110 hover:text-white"
+          className="bg-card/80 absolute top-1/2 left-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border shadow backdrop-blur-sm transition-all hover:scale-110 hover:text-white"
           style={{ borderColor: 'hsl(var(--color-border))' }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = 'hsl(var(--color-primary))';
             e.currentTarget.style.borderColor = 'hsl(var(--color-primary))';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'hsl(var(--color-card))';
+            e.currentTarget.style.backgroundColor = 'hsl(var(--color-card) / 0.80)';
             e.currentTarget.style.borderColor = 'hsl(var(--color-border))';
           }}
-          aria-label="Previous product"
+          aria-label="Previous slide"
         >
           <ChevronLeft className="h-4 w-4" />
         </button>
         <button
           onClick={scrollNext}
-          className="bg-card absolute top-1/2 right-0 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border shadow transition-all hover:scale-110 hover:text-white"
+          className="bg-card/80 absolute top-1/2 right-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border shadow backdrop-blur-sm transition-all hover:scale-110 hover:text-white"
           style={{ borderColor: 'hsl(var(--color-border))' }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = 'hsl(var(--color-primary))';
             e.currentTarget.style.borderColor = 'hsl(var(--color-primary))';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'hsl(var(--color-card))';
+            e.currentTarget.style.backgroundColor = 'hsl(var(--color-card) / 0.80)';
             e.currentTarget.style.borderColor = 'hsl(var(--color-border))';
           }}
-          aria-label="Next product"
+          aria-label="Next slide"
         >
           <ChevronRight className="h-4 w-4" />
         </button>
       </div>
 
       {/* Dot indicators */}
-      <div className="flex justify-center gap-1.5 pb-3">
-        {products.map((_, i) => (
+      <div className="flex justify-center gap-1.5 pt-2 pb-3">
+        {Array.from({ length: totalSlides }).map((_, i) => (
           <button
             key={i}
             onClick={() => emblaApi?.scrollTo(i)}
@@ -175,12 +193,12 @@ export default function CategoryCardWithCarousel({
               backgroundColor:
                 i === currentIndex ? 'hsl(var(--color-primary))' : 'hsl(var(--color-border))',
             }}
-            aria-label={`Go to product ${i + 1}`}
+            aria-label={i === 0 ? `Go to category overview` : `Go to product ${i}`}
           />
         ))}
       </div>
 
-      {/* WhatsApp CTA for the active product */}
+      {/* WhatsApp CTA */}
       <div className="border-border border-t px-4 py-3">
         <Button
           asChild
@@ -192,7 +210,7 @@ export default function CategoryCardWithCarousel({
             href={generateWhatsAppUrl(business.whatsapp, whatsappMsg)}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Inquire about ${currentProduct.name} on WhatsApp`}
+            aria-label={whatsappLabel}
           >
             <MessageCircle className="h-3.5 w-3.5" />
             Inquire Now

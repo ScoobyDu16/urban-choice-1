@@ -10,18 +10,25 @@ export const revalidate = 3600;
 export const metadata: Metadata = generatePageMetadata({
   title: 'All Products',
   description:
-    'Browse our complete catalogue of 500+ premium products across home, kitchen, office, wellness, outdoor, and tech categories. Quality guaranteed.',
+    'Browse our complete catalogue of 100+ building materials across safety items, sanitary ware, hardware, electrical supplies, plumbing, paints, power tools, fasteners, and packaging — all available in Dubai, UAE.',
   keywords: [
-    'all products',
-    'product catalogue',
+    'building materials Dubai',
+    'construction supplies UAE',
+    'hardware tools Dubai',
+    'safety equipment UAE',
     'urban choice products',
-    'premium products',
-    'online catalogue',
   ],
   canonicalPath: '/products',
 });
 
-export default function ProductsPage() {
+export default async function ProductsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
+  const initialSearchQuery = q ?? '';
+
   return (
     <div className="container mx-auto max-w-7xl px-4 py-8">
       <Breadcrumb items={[{ label: 'Products', href: '/products' }]} />
@@ -40,7 +47,7 @@ export default function ProductsPage() {
         </p>
       </div>
 
-      <ProductsGrid products={products} />
+      <ProductsGrid products={products} initialSearchQuery={initialSearchQuery} />
     </div>
   );
 }

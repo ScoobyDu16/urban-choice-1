@@ -1,141 +1,110 @@
 'use client';
 
-import React from 'react';
-import { SlidersHorizontal, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React, { useRef, useState } from 'react';
+import { Search, X } from 'lucide-react';
 import { SORT_OPTIONS } from '@/constants';
-import { siteConfig } from '@/data/site-config';
-import type { Category } from '@/types';
 import type { SortOption } from '@/hooks/useProductFilter';
 
 interface ProductFilterProps {
-  category?: Category;
-  subcategory: string;
-  setSubcategory: (v: string) => void;
+  searchQuery: string;
+  setSearchQuery: (v: string) => void;
   sortBy: SortOption;
   setSortBy: (v: SortOption) => void;
-  availability: string;
-  setAvailability: (v: string) => void;
-  resetFilters: () => void;
-  activeFiltersCount: number;
   totalProducts: number;
 }
 
 const selectStyle: React.CSSProperties = {
   backgroundColor: 'hsl(var(--color-background))',
   color: 'hsl(var(--color-foreground))',
+  borderColor: 'hsl(var(--color-border))',
 };
 
 export default function ProductFilter({
-  category,
-  subcategory,
-  setSubcategory,
+  searchQuery,
+  setSearchQuery,
   sortBy,
   setSortBy,
-  availability,
-  setAvailability,
-  resetFilters,
-  activeFiltersCount,
   totalProducts,
 }: ProductFilterProps) {
-  const { showAvailability } = siteConfig.features;
+  // Local value drives the visible input; debounced propagation updates the filter
+  const [inputValue, setInputValue] = useState(searchQuery);
+  const [focused, setFocused] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Always holds the latest value so the setTimeout callback is never stale
+  const latestRef = useRef(searchQuery);
+
+  const handleChange = (v: string) => {
+    latestRef.current = v;
+    setInputValue(v);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setSearchQuery(latestRef.current), 300);
+  };
+
+  const handleClear = () => {
+    latestRef.current = '';
+    setInputValue('');
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setSearchQuery('');
+  };
 
   return (
-    <div className="bg-card text-card-foreground flex flex-wrap items-center gap-3 rounded-xl border p-4">
-      <div className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
-        <SlidersHorizontal className="h-4 w-4" />
-        <span>Filter & Sort</span>
-        <span className="text-xs">({totalProducts} items)</span>
-      </div>
-
-      {/* Subcategory pills */}
-      {category?.subcategories && category.subcategories.length > 0 && (
-        <div className="flex flex-wrap gap-1.5">
+    <div className="flex flex-wrap items-center gap-3">
+      {/* Search input */}
+      <div
+        className="flex min-w-0 flex-1 items-center gap-2 rounded-lg border px-3 py-2.5 transition-all duration-150"
+        style={{
+          backgroundColor: 'hsl(var(--color-background))',
+          borderColor: focused ? 'hsl(var(--color-primary))' : 'hsl(var(--color-border))',
+          boxShadow: focused ? '0 0 0 3px hsl(var(--color-primary) / 0.15)' : 'none',
+        }}
+      >
+        <Search
+          className="h-4 w-4 shrink-0 transition-colors"
+          style={{
+            color: focused ? 'hsl(var(--color-primary))' : 'hsl(var(--color-muted-foreground))',
+          }}
+        />
+        <input
+          type="text"
+          placeholder="Search products…"
+          value={inputValue}
+          onChange={(e) => handleChange(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          className="w-full bg-transparent text-sm outline-none"
+          style={{ color: 'hsl(var(--color-foreground))', boxShadow: 'none' }}
+          aria-label="Search products"
+        />
+        {inputValue && (
           <button
-            onClick={() => setSubcategory('all')}
-            className={`rounded-full px-3 py-1 text-xs font-medium transition-all hover:scale-105 ${
-              subcategory === 'all'
-                ? 'text-white shadow-sm'
-                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-            }`}
-            style={
-              subcategory === 'all'
-                ? { backgroundColor: 'hsl(var(--color-primary))', color: '#fff' }
-                : {}
-            }
+            onClick={handleClear}
+            aria-label="Clear search"
+            className="shrink-0 transition-opacity hover:opacity-70"
           >
-            All
+            <X className="h-3.5 w-3.5" style={{ color: 'hsl(var(--color-muted-foreground))' }} />
           </button>
-          {category.subcategories.map((sub) => (
-            <button
-              key={sub.slug}
-              onClick={() => setSubcategory(sub.slug)}
-              className={`rounded-full px-3 py-1 text-xs font-medium transition-all hover:scale-105 ${
-                subcategory === sub.slug
-                  ? 'text-white shadow-sm'
-                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-              }`}
-              style={
-                subcategory === sub.slug
-                  ? { backgroundColor: 'hsl(var(--color-primary))', color: '#fff' }
-                  : {}
-              }
-            >
-              {sub.name}
-            </button>
-          ))}
-        </div>
-      )}
-
-      <div className="ml-auto flex items-center gap-2">
-        {/* Availability — only shown when showAvailability feature flag is on */}
-        {showAvailability && (
-          <select
-            value={availability}
-            onChange={(e) => setAvailability(e.target.value)}
-            className="hover:border-primary focus:ring-ring cursor-pointer rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors focus:ring-2 focus:outline-none"
-            style={selectStyle}
-            aria-label="Filter by availability"
-          >
-            <option value="all" style={selectStyle}>
-              All Availability
-            </option>
-            <option value="in_stock" style={selectStyle}>
-              In Stock
-            </option>
-            <option value="pre_order" style={selectStyle}>
-              Pre-Order
-            </option>
-          </select>
-        )}
-
-        {/* Sort */}
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value as SortOption)}
-          className="hover:border-primary focus:ring-ring cursor-pointer rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors focus:ring-2 focus:outline-none"
-          style={selectStyle}
-          aria-label="Sort products"
-        >
-          {SORT_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value} style={selectStyle}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
-
-        {activeFiltersCount > 0 && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={resetFilters}
-            className="hover:text-destructive h-8 gap-1 text-xs"
-          >
-            <X className="h-3 w-3" />
-            Clear ({activeFiltersCount})
-          </Button>
         )}
       </div>
+
+      {/* Sort dropdown */}
+      <select
+        value={sortBy}
+        onChange={(e) => setSortBy(e.target.value as SortOption)}
+        className="cursor-pointer rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors outline-none"
+        style={selectStyle}
+        aria-label="Sort products"
+      >
+        {SORT_OPTIONS.map((opt) => (
+          <option key={opt.value} value={opt.value} style={selectStyle}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+
+      {/* Item count */}
+      <span className="shrink-0 text-sm" style={{ color: 'hsl(var(--color-muted-foreground))' }}>
+        {totalProducts} {totalProducts === 1 ? 'product' : 'products'}
+      </span>
     </div>
   );
 }

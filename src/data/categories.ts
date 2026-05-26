@@ -10,7 +10,7 @@ export const categories: Category[] = [
     shortDescription: 'PPE and safety gear for construction and industrial use.',
     icon: 'ShieldCheck',
     image: {
-      url: '/categories/safety-items.png',
+      url: '/categories/safety-items-1.png',
       alt: 'Safety helmets and personal protective equipment',
       width: 800,
       height: 600,
@@ -58,7 +58,7 @@ export const categories: Category[] = [
     shortDescription: 'Wash basins, WCs, mixers, showers and bathroom accessories.',
     icon: 'Bath',
     image: {
-      url: '/categories/sanitary-items.png',
+      url: '/categories/sanitary-items-1.png',
       alt: 'Modern bathroom with sanitary fittings and fixtures',
       width: 800,
       height: 600,
@@ -111,7 +111,7 @@ export const categories: Category[] = [
     shortDescription: 'Hinges, locks, handles, hand tools and cutting accessories.',
     icon: 'Wrench',
     image: {
-      url: '/categories/hardware-items.png',
+      url: '/categories/hardware-items-1.png',
       alt: 'Hardware tools and building accessories',
       width: 800,
       height: 600,
@@ -159,7 +159,7 @@ export const categories: Category[] = [
     shortDescription: 'Wires, LED lights, switches, breakers and conduits.',
     icon: 'Zap',
     image: {
-      url: '/categories/electrical-items.png',
+      url: '/categories/electrical-items-1.png',
       alt: 'Electrical wires, switches and circuit breakers',
       width: 800,
       height: 600,
@@ -212,7 +212,7 @@ export const categories: Category[] = [
     shortDescription: 'PPR & PVC pipes, valves, pumps and drainage solutions.',
     icon: 'Pipette',
     image: {
-      url: '/categories/plumbing-items.png',
+      url: '/categories/plumbing-items-1.png',
       alt: 'Plumbing pipes fittings and valves',
       width: 800,
       height: 600,
@@ -255,7 +255,7 @@ export const categories: Category[] = [
     shortDescription: 'Cement, bricks, blocks, rebar, gypsum and insulation materials.',
     icon: 'Building2',
     image: {
-      url: '/categories/building-materials.png',
+      url: '/categories/building-materials-1.png',
       alt: 'Building materials including cement bricks and construction supplies',
       width: 800,
       height: 600,
@@ -308,7 +308,7 @@ export const categories: Category[] = [
     shortDescription: 'Bolts, nuts, screws, anchors, rods and rivets.',
     icon: 'Settings',
     image: {
-      url: '/categories/fasteners.png',
+      url: '/categories/fasteners-1.png',
       alt: 'Assorted fasteners including bolts nuts and screws',
       width: 800,
       height: 600,
@@ -351,7 +351,7 @@ export const categories: Category[] = [
     shortDescription: 'Drills, grinders, saws, welding machines and compressors.',
     icon: 'Zap',
     image: {
-      url: '/categories/power-tools.png',
+      url: '/categories/power-tools-1.png',
       alt: 'Power tools including drills and angle grinders',
       width: 800,
       height: 600,
@@ -399,7 +399,7 @@ export const categories: Category[] = [
     shortDescription: 'Emulsion paints, primers, rollers, brushes and spray machines.',
     icon: 'Paintbrush',
     image: {
-      url: '/categories/paint-tools.png',
+      url: '/categories/paint-tools-1.png',
       alt: 'Paint cans brushes and painting tools',
       width: 800,
       height: 600,
@@ -441,7 +441,7 @@ export const categories: Category[] = [
     shortDescription: 'Bubble wrap, stretch film, tape, bags and packing supplies.',
     icon: 'Package',
     image: {
-      url: '/categories/packaging-materials.png',
+      url: '/categories/packaging-materials-1.png',
       alt: 'Packaging materials including bubble wrap and stretch film',
       width: 800,
       height: 600,

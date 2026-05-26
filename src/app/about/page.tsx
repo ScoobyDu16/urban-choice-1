@@ -69,7 +69,7 @@ export default function AboutPage() {
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80"
+            src="/site/about-banner.png"
             alt="Building materials and construction site"
             fill
             sizes="100vw"
@@ -155,27 +155,15 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="relative">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1487875961445-47a00398c267?w=800&q=80"
-                  alt="Urban Choice building materials showroom and warehouse Dubai"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-              {/* Orange accent card */}
-              <div
-                className="absolute -right-5 -bottom-5 rounded-2xl p-5 text-white shadow-xl"
-                style={{
-                  backgroundColor: 'hsl(var(--color-primary))',
-                  boxShadow: '0 20px 40px hsl(var(--color-primary) / 0.35)',
-                }}
-              >
-                <p className="text-3xl font-extrabold">{business.founded}</p>
-                <p className="text-sm font-medium text-white/90">Est. in Dubai, UAE</p>
-              </div>
+            <div className="relative w-full">
+              <Image
+                src="/site/showroom.png"
+                alt="Urban Choice building materials showroom and warehouse Dubai"
+                width={800}
+                height={600}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="h-auto w-full rounded-2xl object-cover shadow-xl"
+              />
             </div>
           </div>
         </section>

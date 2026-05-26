@@ -190,7 +190,7 @@ export default function HomePage() {
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80"
+            src="/site/stats-bg.png"
             alt="Construction site overview"
             fill
             sizes="100vw"
@@ -318,8 +318,8 @@ export default function HomePage() {
             <div className="relative">
               <div className="relative aspect-4/3 overflow-hidden rounded-2xl shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1487875961445-47a00398c267?w=800&q=80"
-                  alt="Urban Choice building materials showroom Dubai"
+                  src="/site/team-counter.png"
+                  alt="Urban Choice building materials trade counter Dubai"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
@@ -378,7 +378,7 @@ export default function HomePage() {
           {/* Background image */}
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80"
+              src="/site/cta-bg.png"
               alt="Modern building construction"
               fill
               sizes="100vw"

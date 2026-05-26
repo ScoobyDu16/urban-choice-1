@@ -5,13 +5,25 @@ import type { Product } from '@/types';
 
 export type SortOption = 'featured' | 'name-asc' | 'name-desc' | 'newest';
 
-export function useProductFilter(initialProducts: Product[]) {
+export function useProductFilter(initialProducts: Product[], initialSearchQuery = '') {
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
   const [subcategory, setSubcategory] = useState<string>('all');
   const [sortBy, setSortBy] = useState<SortOption>('featured');
   const [availability, setAvailability] = useState<string>('all');
 
   const filteredProducts = useMemo(() => {
     let filtered = [...initialProducts];
+
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      filtered = filtered.filter(
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          p.shortDescription.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q) ||
+          p.tags.some((t) => t.toLowerCase().includes(q)),
+      );
+    }
 
     if (subcategory !== 'all') {
       filtered = filtered.filter((p) => p.subcategory === subcategory);
@@ -37,9 +49,10 @@ export function useProductFilter(initialProducts: Product[]) {
     }
 
     return filtered;
-  }, [initialProducts, subcategory, sortBy, availability]);
+  }, [initialProducts, searchQuery, subcategory, sortBy, availability]);
 
   const resetFilters = useCallback(() => {
+    setSearchQuery('');
     setSubcategory('all');
     setSortBy('featured');
     setAvailability('all');
@@ -47,6 +60,8 @@ export function useProductFilter(initialProducts: Product[]) {
 
   return {
     filteredProducts,
+    searchQuery,
+    setSearchQuery,
     subcategory,
     setSubcategory,
     sortBy,
@@ -55,6 +70,7 @@ export function useProductFilter(initialProducts: Product[]) {
     setAvailability,
     resetFilters,
     activeFiltersCount: [
+      searchQuery.trim() !== '',
       subcategory !== 'all',
       availability !== 'all',
       sortBy !== 'featured',
