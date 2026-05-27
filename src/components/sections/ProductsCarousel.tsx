@@ -54,7 +54,7 @@ export default function ProductsCarousel({
   }, [emblaApi]);
 
   return (
-    <div className="relative">
+    <div className="group/prodcarousel relative">
       <div ref={emblaRef} className="overflow-hidden">
         <div className="flex gap-6">
           {products.map((product, i) => (
@@ -65,6 +65,8 @@ export default function ProductsCarousel({
               <ProductCard product={product} priority={i < 2} noLink={noLink} />
             </div>
           ))}
+          {/* Spacer slide — prevents the last→first gap in loop mode */}
+          {autoplay && <div className="w-6 flex-none" aria-hidden="true" />}
         </div>
       </div>
 
@@ -72,7 +74,7 @@ export default function ProductsCarousel({
       <button
         onClick={scrollPrev}
         disabled={!autoplay && !canScrollPrev}
-        className="text-foreground absolute top-1/2 -left-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border shadow-lg transition-all duration-200 hover:scale-110 hover:border-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+        className="text-foreground absolute top-1/2 -left-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border opacity-0 shadow-lg transition-all duration-200 group-hover/prodcarousel:opacity-100 hover:scale-110 hover:border-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
         style={{
           backgroundColor: 'hsl(var(--color-card))',
           borderColor: 'hsl(var(--color-border))',
@@ -96,7 +98,7 @@ export default function ProductsCarousel({
       <button
         onClick={scrollNext}
         disabled={!autoplay && !canScrollNext}
-        className="text-foreground absolute top-1/2 -right-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border shadow-lg transition-all duration-200 hover:scale-110 hover:border-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+        className="text-foreground absolute top-1/2 -right-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border opacity-0 shadow-lg transition-all duration-200 group-hover/prodcarousel:opacity-100 hover:scale-110 hover:border-transparent hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
         style={{
           backgroundColor: 'hsl(var(--color-card))',
           borderColor: 'hsl(var(--color-border))',

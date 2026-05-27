@@ -43,7 +43,8 @@ const features = [
   {
     icon: ShieldCheck,
     title: 'Quality Guaranteed',
-    description: 'All products meet Dubai Municipality and UAE standards.',
+    description:
+      'We source only from established, reputable manufacturers — every product meets UAE and international standards.',
   },
   {
     icon: PhoneCall,
@@ -53,10 +54,10 @@ const features = [
 ];
 
 const stats = [
-  { icon: Building2, value: '10+', label: 'Years in Business' },
-  { icon: Users, value: '5,000+', label: 'Projects Completed' },
+  { icon: Users, value: '500+', label: 'Happy Customers' },
   { icon: Package, value: '100+', label: 'Products in Stock' },
   { icon: BadgeCheck, value: '20+', label: 'Premium Brands' },
+  { icon: Building2, value: '10+', label: 'Product Categories' },
 ];
 
 export default function HomePage() {
@@ -284,7 +285,7 @@ export default function HomePage() {
                 {[
                   'Multiple product categories covering every stage of construction and fit-out',
                   'Safety items, sanitary ware, electrical, plumbing, power tools, and more',
-                  'Dubai Municipality compliant products across all categories',
+                  'UAE and internationally compliant products across all categories',
                   'Competitive pricing for bulk orders and ongoing projects',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm">

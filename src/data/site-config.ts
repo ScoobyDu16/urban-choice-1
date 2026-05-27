@@ -1,5 +1,12 @@
 import type { SiteConfig } from '@/types';
 
+/* ── Social link visibility toggles ──────────────────────────────────────────
+   Set to true to show the platform in the footer / header.
+   Set to false to hide it entirely.
+   ────────────────────────────────────────────────────────────────────────── */
+const SHOW_FACEBOOK = false;
+const SHOW_INSTAGRAM = false;
+
 export const siteConfig: SiteConfig = {
   business: {
     name: 'Urban Choice Building Materials Trading',
@@ -12,7 +19,8 @@ export const siteConfig: SiteConfig = {
     url: 'https://urbanchoicebmt.com',
     email: 'urbanchoicebmt@gmail.com',
     phone: '04 332 6885',
-    mobile: '04 335 8298',
+    phone2: '04 335 8298',
+    mobile: '+971 54 586 8790',
     whatsapp: '971545868790',
     address: {
       street: 'Dubai',
@@ -30,8 +38,8 @@ export const siteConfig: SiteConfig = {
     googleMapsLink:
       'https://www.google.com/maps/place/Urban+Choice+Building+Materials+Trading+Co+LLC/@25.2712150527143,55.29299325356788,15z',
     socialLinks: {
-      facebook: 'https://facebook.com/urbanchoicebmt',
-      instagram: 'https://instagram.com/urbanchoicebmt',
+      facebook: SHOW_FACEBOOK ? 'https://facebook.com/urbanchoicebmt' : undefined,
+      instagram: SHOW_INSTAGRAM ? 'https://instagram.com/urbanchoicebmt' : undefined,
     },
     businessHours: [{ days: 'Monday – Saturday', hours: '8:30 AM – 6:00 PM' }],
     founded: '2024',

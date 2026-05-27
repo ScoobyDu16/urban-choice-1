@@ -189,21 +189,23 @@ export const products: Product[] = [
   },
   {
     id: 'prod-010',
-    name: 'Fire Extinguisher',
-    slug: 'fire-extinguisher',
+    name: 'Safety Cone',
+    slug: 'safety-cone',
     category: 'safety-items',
-    images: [img('/safety-items/fire-extinguisher.png', 'Fire extinguisher for site safety')],
-    thumbnail: thumb('/safety-items/fire-extinguisher.png', 'Fire Extinguisher'),
-    shortDescription: 'Portable fire extinguisher for construction sites and workplaces.',
+    images: [img('/safety-items/safety-cone.png', 'Safety cone for site hazard marking')],
+    thumbnail: thumb('/safety-items/safety-cone.png', 'Safety Cone'),
+    shortDescription:
+      'High-visibility safety cone for marking hazards on construction sites and roads.',
     fullDescription:
-      'Portable fire extinguisher suitable for construction sites, warehouses, and commercial premises. Effective against common fire classes. Easy to operate with clear instruction labels. Meets UAE civil defence requirements.',
+      'High-visibility PVC safety cone for delineating hazards, roadworks, and restricted zones on construction sites, warehouses, and public roads. Bright orange with reflective collars for maximum visibility day and night. Stackable design for easy storage and transport. Meets UAE and international traffic safety standards.',
     availability: 'in_stock',
     featured: false,
-    tags: ['fire extinguisher', 'fire safety', 'PPE', 'site safety'],
+    tags: ['safety cone', 'traffic cone', 'site safety', 'PPE', 'hazard marking'],
     seo: {
-      title: 'Fire Extinguisher Dubai | Urban Choice',
-      description: 'Buy fire extinguishers for construction sites in Dubai UAE.',
-      keywords: ['fire extinguisher Dubai', 'fire safety UAE'],
+      title: 'Safety Cones Dubai | Urban Choice',
+      description:
+        'Buy high-visibility safety cones for construction sites and roadworks in Dubai UAE.',
+      keywords: ['safety cone Dubai', 'traffic cone UAE', 'site safety equipment Dubai'],
     },
   },
 
@@ -987,7 +989,7 @@ export const products: Product[] = [
     thumbnail: thumb('/building-materials/cement.png', 'Cement'),
     shortDescription: 'OPC Portland cement for concrete, mortar, and general construction.',
     fullDescription:
-      'Ordinary Portland Cement (OPC) for concrete mixes, mortar, plaster, and general construction. Dubai Municipality and international standard compliant. Suitable for structural and non-structural applications.',
+      'Ordinary Portland Cement (OPC) for concrete mixes, mortar, plaster, and general construction. Compliant with UAE and international standards. Suitable for structural and non-structural applications.',
     availability: 'in_stock',
     featured: false,
     tags: ['cement', 'Portland cement', 'OPC', 'building material'],
@@ -1006,7 +1008,7 @@ export const products: Product[] = [
     thumbnail: thumb('/building-materials/concrete-blocks.png', 'Concrete Blocks'),
     shortDescription: 'Load-bearing concrete hollow blocks for walls and partitions.',
     fullDescription:
-      'Standard load-bearing hollow and solid concrete blocks meeting Dubai Municipality standards. Suitable for external and internal walls, partitions, and retaining walls in residential and commercial construction.',
+      'Standard load-bearing hollow and solid concrete blocks meeting UAE construction standards. Suitable for external and internal walls, partitions, and retaining walls in residential and commercial construction.',
     availability: 'in_stock',
     featured: false,
     tags: ['concrete blocks', 'hollow block', 'masonry', 'building material'],
@@ -1025,7 +1027,7 @@ export const products: Product[] = [
     thumbnail: thumb('/building-materials/steel-rebars.png', 'Steel Rebar'),
     shortDescription: 'Deformed steel rebar for reinforced concrete structures.',
     fullDescription:
-      'Hot-rolled deformed steel reinforcing bars for reinforced concrete slabs, columns, beams, and foundations. Dubai Municipality approved. Available in various diameters. Meets international structural steel standards.',
+      'Hot-rolled deformed steel reinforcing bars for reinforced concrete slabs, columns, beams, and foundations. Available in various diameters. Meets UAE and international structural steel standards.',
     availability: 'in_stock',
     featured: false,
     tags: ['steel rebar', 'reinforcement', 'structural steel', 'building material'],
@@ -1144,7 +1146,7 @@ export const products: Product[] = [
     thumbnail: thumb('/building-materials/aggregate.png', 'Aggregate'),
     shortDescription: 'Crushed stone aggregate for concrete and construction use.',
     fullDescription:
-      'Crushed stone and gravel aggregate for concrete production, road construction, and drainage applications. Available in coarse and fine grades. Meets Dubai Municipality standards for construction aggregates.',
+      'Crushed stone and gravel aggregate for concrete production, road construction, and drainage applications. Available in coarse and fine grades. Meets UAE standards for construction aggregates.',
     availability: 'in_stock',
     featured: false,
     tags: ['aggregate', 'gravel', 'crushed stone', 'building material'],
@@ -1156,21 +1158,34 @@ export const products: Product[] = [
   },
   {
     id: 'prod-060',
-    name: 'Red Bricks',
-    slug: 'red-bricks',
+    name: 'Paver Block',
+    slug: 'paver-block',
     category: 'building-materials',
-    images: [img('/building-materials/red-bricks.png', 'Red bricks for construction')],
-    thumbnail: thumb('/building-materials/red-bricks.png', 'Red Bricks'),
-    shortDescription: 'Fired clay red bricks for walls, facades, and landscaping.',
+    images: [
+      img(
+        '/building-materials/paver-block.png',
+        'Concrete paver blocks for driveways and pathways',
+      ),
+    ],
+    thumbnail: thumb('/building-materials/paver-block.png', 'Paver Block'),
+    shortDescription: 'Concrete paver blocks for driveways, pathways, and outdoor flooring.',
     fullDescription:
-      'Kiln-fired clay red bricks for constructing walls, facades, garden features, and landscaping projects. Durable and weather-resistant. Suitable for load-bearing and non-load-bearing wall construction.',
+      'High-strength concrete paver blocks for driveways, walkways, plazas, and outdoor flooring. Interlocking design provides a stable, durable surface that is easy to install and maintain. Resistant to heavy loads, UV exposure, and harsh UAE weather conditions. Available in various shapes, sizes, and finishes to suit residential and commercial landscaping projects.',
     availability: 'in_stock',
     featured: false,
-    tags: ['red bricks', 'clay bricks', 'masonry', 'building material'],
+    tags: [
+      'paver block',
+      'concrete pavers',
+      'interlocking pavers',
+      'driveway',
+      'outdoor flooring',
+      'landscaping',
+    ],
     seo: {
-      title: 'Red Bricks Dubai | Urban Choice',
-      description: 'Buy red bricks and clay bricks in Dubai UAE.',
-      keywords: ['red bricks Dubai', 'clay bricks UAE'],
+      title: 'Paver Blocks Dubai | Urban Choice',
+      description:
+        'Buy concrete paver blocks for driveways, pathways, and outdoor flooring in Dubai UAE.',
+      keywords: ['paver blocks Dubai', 'concrete pavers UAE', 'interlocking pavers Dubai'],
     },
   },
 

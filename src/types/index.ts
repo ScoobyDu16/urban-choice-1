@@ -120,6 +120,7 @@ export interface BusinessInfo {
   url: string;
   email: string;
   phone: string;
+  phone2?: string;
   mobile?: string;
   whatsapp: string;
   address: {

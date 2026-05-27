@@ -26,10 +26,10 @@ export const metadata: Metadata = generatePageMetadata({
 });
 
 const stats = [
-  { icon: Building2, value: '10+', label: 'Years in Business' },
-  { icon: Users, value: '5,000+', label: 'Projects Completed' },
+  { icon: Users, value: '500+', label: 'Happy Customers' },
   { icon: Award, value: '20+', label: 'Premium Brands' },
   { icon: BadgeCheck, value: '100+', label: 'Products in Stock' },
+  { icon: Building2, value: '10+', label: 'Product Categories' },
 ];
 
 const values = [
@@ -41,7 +41,7 @@ const values = [
   {
     title: 'UAE-Compliant',
     description:
-      'All building materials we supply comply with Dubai Municipality regulations and applicable UAE/GCC standards, giving you total peace of mind.',
+      'All building materials we supply comply with applicable UAE standards, giving you total peace of mind.',
   },
   {
     title: 'Expert Team',

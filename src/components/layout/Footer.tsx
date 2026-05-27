@@ -89,6 +89,17 @@ export default function Footer() {
                   {business.phone}
                 </a>
               </li>
+              {business.phone2 && (
+                <li>
+                  <a
+                    href={generateTelUrl(business.phone2)}
+                    className="flex items-start gap-2 text-sm text-white/60 transition-colors duration-200 hover:text-white"
+                  >
+                    <Phone className="mt-0.5 h-4 w-4 shrink-0" />
+                    {business.phone2}
+                  </a>
+                </li>
+              )}
               {business.mobile && (
                 <li>
                   <a

@@ -49,7 +49,7 @@ export default function ContactPage() {
           <div className="bg-card space-y-5 rounded-xl border p-6">
             <h2 className="text-lg font-semibold">Contact Information</h2>
 
-            {/* Landline */}
+            {/* Landline 1 */}
             <a
               href={generateTelUrl(business.phone)}
               className="group flex items-start gap-3"
@@ -68,6 +68,28 @@ export default function ContactPage() {
                 </p>
               </div>
             </a>
+
+            {/* Landline 2 */}
+            {business.phone2 && (
+              <a
+                href={generateTelUrl(business.phone2)}
+                className="group flex items-start gap-3"
+                aria-label={`Call us at ${business.phone2}`}
+              >
+                <div
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors"
+                  style={{ backgroundColor: 'hsl(var(--color-primary) / 0.10)' }}
+                >
+                  <Phone className="text-primary h-5 w-5" />
+                </div>
+                <div>
+                  <p className="text-muted-foreground text-xs">Landline</p>
+                  <p className="group-hover:text-primary font-medium transition-colors">
+                    {business.phone2}
+                  </p>
+                </div>
+              </a>
+            )}
 
             {/* Mobile */}
             {business.mobile && (

@@ -41,20 +41,32 @@ export default function HeroCarousel({ banners }: HeroCarouselProps) {
   if (!banners.length) return null;
 
   return (
-    <section className="relative overflow-hidden" aria-label="Hero banner">
+    <section className="group/carousel relative overflow-hidden" aria-label="Hero banner">
       <div ref={emblaRef} className="overflow-hidden">
         <div className="flex">
           {banners.map((banner, index) => (
             <div key={banner.id} className="relative min-w-full">
               {/* Background image */}
               <div className="absolute inset-0">
+                {/* Mobile image (portrait crop) — hidden on sm+ */}
+                {banner.mobileImage && (
+                  <Image
+                    src={banner.mobileImage.url}
+                    alt={banner.mobileImage.alt}
+                    fill
+                    priority={index === 0}
+                    sizes="100vw"
+                    className="object-cover sm:hidden"
+                  />
+                )}
+                {/* Desktop image */}
                 <Image
                   src={banner.image.url}
                   alt={banner.image.alt}
                   fill
                   priority={index === 0}
                   sizes="100vw"
-                  className="object-cover"
+                  className={`object-cover ${banner.mobileImage ? 'hidden sm:block' : ''}`}
                 />
                 {/* Dark overlay with orange-tinted gradient */}
                 <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-900/70 to-slate-900/40" />
@@ -149,7 +161,7 @@ export default function HeroCarousel({ banners }: HeroCarouselProps) {
         <>
           <button
             onClick={scrollPrev}
-            className="hover:border-primary group absolute top-1/2 left-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white backdrop-blur-sm transition-all hover:scale-110"
+            className="hover:border-primary group absolute top-1/2 left-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white opacity-0 backdrop-blur-sm transition-all group-hover/carousel:opacity-100 hover:scale-110"
             style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.backgroundColor = 'hsl(var(--color-primary))')
@@ -161,7 +173,7 @@ export default function HeroCarousel({ banners }: HeroCarouselProps) {
           </button>
           <button
             onClick={scrollNext}
-            className="hover:border-primary absolute top-1/2 right-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white backdrop-blur-sm transition-all hover:scale-110"
+            className="hover:border-primary absolute top-1/2 right-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white opacity-0 backdrop-blur-sm transition-all group-hover/carousel:opacity-100 hover:scale-110"
             style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.backgroundColor = 'hsl(var(--color-primary))')

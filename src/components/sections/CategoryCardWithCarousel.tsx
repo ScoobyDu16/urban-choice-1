@@ -65,7 +65,7 @@ export default function CategoryCardWithCarousel({
       : `Inquire about ${displayProducts[currentIndex - 1]?.name} on WhatsApp`;
 
   return (
-    <div className="group border-border bg-card flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:shadow-lg">
+    <div className="group/catcard border-border bg-card flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:shadow-lg">
       {/* Combined carousel: category image first, then products */}
       <div className="relative">
         <div ref={emblaRef} className="overflow-hidden">
@@ -138,6 +138,12 @@ export default function CategoryCardWithCarousel({
                       <span className="text-xs font-medium text-slate-400">Coming soon</span>
                     </div>
                   )}
+                  {/* Category name badge — always visible on product slides */}
+                  <div className="absolute top-0 right-0 left-0 px-3 pt-2.5">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-black/50 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+                      {category.name}
+                    </span>
+                  </div>
                 </Link>
                 <Link
                   href={`/products/${product.slug}`}
@@ -156,7 +162,7 @@ export default function CategoryCardWithCarousel({
         {/* Prev / Next arrows */}
         <button
           onClick={scrollPrev}
-          className="bg-card/80 absolute top-1/2 left-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border shadow backdrop-blur-sm transition-all hover:scale-110 hover:text-white"
+          className="bg-card/80 absolute top-1/2 left-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border opacity-0 shadow backdrop-blur-sm transition-all group-hover/catcard:opacity-100 hover:scale-110 hover:text-white"
           style={{ borderColor: 'hsl(var(--color-border))' }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = 'hsl(var(--color-primary))';
@@ -172,7 +178,7 @@ export default function CategoryCardWithCarousel({
         </button>
         <button
           onClick={scrollNext}
-          className="bg-card/80 absolute top-1/2 right-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border shadow backdrop-blur-sm transition-all hover:scale-110 hover:text-white"
+          className="bg-card/80 absolute top-1/2 right-2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full border opacity-0 shadow backdrop-blur-sm transition-all group-hover/catcard:opacity-100 hover:scale-110 hover:text-white"
           style={{ borderColor: 'hsl(var(--color-border))' }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = 'hsl(var(--color-primary))';
