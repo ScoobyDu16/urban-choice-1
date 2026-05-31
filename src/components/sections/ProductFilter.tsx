@@ -113,10 +113,12 @@ export default function ProductFilter({
         ))}
       </select>
 
-      {/* Item count */}
-      <span className="shrink-0 text-sm" style={{ color: 'hsl(var(--color-muted-foreground))' }}>
-        {totalProducts} {totalProducts === 1 ? 'product' : 'products'}
-      </span>
+      {/* Item count — only shown when a search is active */}
+      {searchQuery && (
+        <span className="shrink-0 text-sm" style={{ color: 'hsl(var(--color-muted-foreground))' }}>
+          {totalProducts} {totalProducts === 1 ? 'product' : 'products'}
+        </span>
+      )}
     </div>
   );
 }

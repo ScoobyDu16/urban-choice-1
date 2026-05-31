@@ -44,9 +44,9 @@ const values = [
       'All building materials we supply comply with applicable UAE standards, giving you total peace of mind.',
   },
   {
-    title: 'Expert Team',
+    title: 'Competitive Pricing',
     description:
-      'Our team has deep knowledge of UAE construction requirements — from paint specifications for hot climates to plumbing standards for high-rise buildings.',
+      'We offer fair, transparent pricing for both small orders and large project supplies — with special rates for bulk purchases and long-term contractor relationships.',
   },
   {
     title: 'Reliable Supply',

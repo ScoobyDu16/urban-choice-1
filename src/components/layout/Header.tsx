@@ -53,7 +53,7 @@ export default function Header() {
           'sticky top-0 z-50 w-full transition-all duration-300',
           scrolled ? 'supports-backdrop-filter:bg-opacity-95 shadow-lg backdrop-blur' : '',
         )}
-        style={{ backgroundColor: 'hsl(215 50% 9%)' }}
+        style={{ backgroundColor: 'hsl(0 0% 100%)', borderBottom: '1px solid hsl(215 20% 89%)' }}
         role="banner"
       >
         {/* ── Orange top bar ───────────────────────────────────────────── */}
@@ -109,33 +109,56 @@ export default function Header() {
 
         {/* ── Main nav ─────────────────────────────────────────────────── */}
         <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 py-10 md:py-0">
-          <Logo textSize="text-lg" light />
+          <Logo textSize="text-lg" />
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'rounded-md px-3 py-2 text-sm font-medium transition-all duration-200',
-                  pathname === link.href
-                    ? 'font-semibold'
-                    : 'text-white/70 hover:bg-white/10 hover:text-white',
-                )}
-                style={pathname === link.href ? { color: 'hsl(var(--color-primary))' } : {}}
-                aria-current={pathname === link.href ? 'page' : undefined}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href;
+              return isActive ? (
+                <span
+                  key={link.href}
+                  className="cursor-default rounded-md px-3 py-2 text-sm font-semibold"
+                  style={{ color: 'hsl(var(--color-primary))' }}
+                  aria-current="page"
+                >
+                  {link.label}
+                </span>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-md px-3 py-2 text-sm font-medium transition-all duration-200"
+                  style={{ color: 'hsl(215 50% 10%)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'hsl(215 20% 88%)';
+                    e.currentTarget.style.color = 'hsl(215 50% 10%)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '';
+                    e.currentTarget.style.color = 'hsl(215 50% 10%)';
+                  }}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Actions */}
           <div className="flex items-center gap-2">
             <button
               onClick={() => setSearchOpen(true)}
-              className="rounded-md p-2 text-white/60 transition-all duration-200 hover:bg-white/10 hover:text-white"
+              className="rounded-md p-2 transition-all duration-200"
+              style={{ color: 'hsl(215 50% 30%)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'hsl(215 20% 93%)';
+                e.currentTarget.style.color = 'hsl(215 50% 10%)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '';
+                e.currentTarget.style.color = 'hsl(215 50% 30%)';
+              }}
               aria-label="Open search"
             >
               <Search className="h-5 w-5" />
@@ -155,7 +178,16 @@ export default function Header() {
             {/* Hamburger */}
             <button
               onClick={() => setDrawerOpen(true)}
-              className="rounded-md p-2 text-white/70 transition-all duration-200 hover:bg-white/10 hover:text-white md:hidden"
+              className="rounded-md p-2 transition-all duration-200 md:hidden"
+              style={{ color: 'hsl(215 50% 30%)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'hsl(215 20% 93%)';
+                e.currentTarget.style.color = 'hsl(215 50% 10%)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '';
+                e.currentTarget.style.color = 'hsl(215 50% 30%)';
+              }}
               aria-label="Open menu"
               aria-expanded={drawerOpen}
               aria-controls="mobile-drawer"
@@ -199,12 +231,19 @@ export default function Header() {
               {/* Drawer header */}
               <div
                 className="flex items-center justify-between border-b px-5 py-4"
-                style={{ backgroundColor: 'hsl(215 50% 9%)' }}
+                style={{ backgroundColor: 'hsl(0 0% 100%)' }}
               >
-                <Logo textSize="text-base" href="/" light />
+                <Logo textSize="text-base" href="/" />
                 <button
                   onClick={() => setDrawerOpen(false)}
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/30"
+                  className="flex h-8 w-8 items-center justify-center rounded-full transition-colors"
+                  style={{ color: 'hsl(215 50% 20%)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'hsl(215 20% 88%)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '';
+                  }}
                   aria-label="Close menu"
                 >
                   <X className="h-4 w-4" />

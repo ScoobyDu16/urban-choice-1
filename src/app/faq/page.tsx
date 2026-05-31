@@ -27,6 +27,7 @@ const grouped = faqs.reduce<Record<string, typeof faqs>>((acc, faq) => {
 const categoryLabels: Record<string, string> = {
   ordering: 'Ordering',
   pricing: 'Pricing & Wholesale',
+  delivery: 'Delivery',
   shipping: 'Shipping & Delivery',
   returns: 'Returns & Exchanges',
   products: 'Products',

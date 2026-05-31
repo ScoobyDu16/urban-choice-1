@@ -41,10 +41,6 @@ export default async function ProductsPage({
           Catalogue
         </p>
         <h1 className="text-3xl font-extrabold sm:text-4xl">All Products</h1>
-        <p className="text-muted-foreground mt-3">
-          {products.length} products across {new Set(products.map((p) => p.category)).size}{' '}
-          categories
-        </p>
       </div>
 
       <ProductsGrid products={products} initialSearchQuery={initialSearchQuery} />

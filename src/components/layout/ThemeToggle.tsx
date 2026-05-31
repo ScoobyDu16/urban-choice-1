@@ -17,7 +17,16 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="rounded-md p-2 text-white/60 transition-all duration-200 hover:bg-white/10 hover:text-white"
+      className="rounded-md p-2 transition-all duration-200"
+      style={{ color: 'hsl(215 50% 30%)' }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = 'hsl(215 20% 93%)';
+        e.currentTarget.style.color = 'hsl(215 50% 10%)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = '';
+        e.currentTarget.style.color = 'hsl(215 50% 30%)';
+      }}
       aria-label="Toggle light / dark theme"
       title="Toggle light / dark theme"
     >

@@ -26,25 +26,23 @@ export function Logo({
 }: LogoProps) {
   const content = (
     <span className={cn('flex items-center gap-2.5', className)}>
-      <span className="flex items-center justify-center overflow-hidden rounded-md bg-white">
-        <Image
-          src="/logo.png"
-          alt="Urban Choice Building Materials"
-          height={height}
-          width={height}
-          className="object-contain"
-          priority
-        />
-      </span>
+      <Image
+        src="/logo.png"
+        alt="Urban Choice Building Materials"
+        height={height}
+        width={height}
+        className="object-contain"
+        priority
+      />
       {!markOnly && (
         <span
-          className={cn(
-            'leading-tight font-bold tracking-tight',
-            textSize,
-            light ? 'text-white' : 'text-foreground',
-          )}
+          className={cn('flex flex-col font-bold tracking-tight', textSize)}
+          style={{ lineHeight: 1, gap: '1px' }}
         >
-          Urban <span className={light ? 'text-white/90' : 'text-primary'}>Choice</span>
+          <span style={{ color: light ? 'white' : 'hsl(215 50% 10%)' }}>Urban</span>
+          <span style={{ color: light ? 'rgba(255,255,255,0.9)' : 'hsl(var(--color-primary))' }}>
+            Choice
+          </span>
         </span>
       )}
     </span>

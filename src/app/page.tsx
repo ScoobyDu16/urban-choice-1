@@ -33,7 +33,7 @@ const features = [
   {
     icon: BadgeCheck,
     title: 'Trusted Brands',
-    description: 'Jotun, Dulux, Grohe, RAK Ceramics, Legrand, Philips, Bosch & more.',
+    description: 'Decoduct, Rontgen Germany, Legrand, Hilti, Siemens, RR Kabel & more.',
   },
   {
     icon: Truck,
@@ -82,7 +82,7 @@ export default function HomePage() {
       {/* ── Features / Trust Bar ──────────────────────────────────────────── */}
       <section className="bg-card border-y" aria-label="Why choose us">
         <div className="container mx-auto max-w-7xl px-4 py-10">
-          <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((f) => (
               <div key={f.title} className="flex items-start gap-3">
                 <div

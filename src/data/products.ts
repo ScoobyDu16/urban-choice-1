@@ -65,7 +65,7 @@ export const products: Product[] = [
     fullDescription:
       'Bright high-visibility mesh vest with reflective strips for maximum visibility day and night. Lightweight and breathable, suitable for outdoor construction and road work environments.',
     availability: 'in_stock',
-    featured: true,
+    featured: false,
     tags: ['safety', 'vest', 'reflective', 'high-visibility', 'PPE'],
     seo: {
       title: 'Reflective Safety Vest Dubai | Urban Choice',
@@ -259,7 +259,7 @@ export const products: Product[] = [
     fullDescription:
       'Contemporary single-hole bathroom mixer tap in chrome finish. Features ceramic disc cartridge for smooth, drip-free operation. Suitable for basin and bath installations in residential and commercial projects.',
     availability: 'in_stock',
-    featured: true,
+    featured: false,
     tags: ['bathroom mixer', 'tap', 'chrome', 'sanitary'],
     seo: {
       title: 'Bathroom Mixer Dubai | Urban Choice',
@@ -432,7 +432,7 @@ export const products: Product[] = [
     fullDescription:
       'Range of heavy-duty mortise locks, rim locks, and padlocks for securing doors, gates, cabinets, and storage units. Available in various security grades with multiple key options.',
     availability: 'in_stock',
-    featured: true,
+    featured: false,
     tags: ['locks', 'padlocks', 'door lock', 'security', 'hardware'],
     seo: {
       title: 'Locks & Padlocks Dubai | Urban Choice',
@@ -451,7 +451,7 @@ export const products: Product[] = [
     fullDescription:
       'Solid stainless steel door handles and cabinet pulls in brushed or polished finish. Suitable for kitchen cabinets, wardrobes, drawers, and interior doors. Screws included.',
     availability: 'in_stock',
-    featured: true,
+    featured: false,
     tags: ['door handles', 'cabinet handle', 'pull handle', 'hardware'],
     seo: {
       title: 'Door Handles Dubai | Urban Choice',
@@ -508,7 +508,7 @@ export const products: Product[] = [
     fullDescription:
       'Comprehensive range of hand tools including hammers, screwdrivers, pliers, wrenches, chisels, and drill bits. Suitable for construction, carpentry, plumbing, and general maintenance work.',
     availability: 'in_stock',
-    featured: false,
+    featured: true,
     tags: ['hand tools', 'tools set', 'hardware'],
     seo: {
       title: 'Hand Tools Dubai | Urban Choice',
@@ -738,7 +738,7 @@ export const products: Product[] = [
     fullDescription:
       'Grey rigid and flexible PVC conduits for surface and concealed wiring. UV-stabilised for outdoor use. Suitable for protecting electrical cables in residential, commercial, and industrial installations.',
     availability: 'in_stock',
-    featured: false,
+    featured: true,
     tags: ['PVC conduit', 'electrical conduit', 'conduit pipe'],
     seo: {
       title: 'PVC Conduits Dubai | Urban Choice',
@@ -757,7 +757,7 @@ export const products: Product[] = [
     fullDescription:
       'Range of energy-efficient ceiling fans with multiple blade spans and speed settings. Remote control and pull-chain options available. Suitable for residential and commercial indoor spaces.',
     availability: 'in_stock',
-    featured: true,
+    featured: false,
     tags: ['ceiling fan', 'fan', 'electrical', 'cooling'],
     seo: {
       title: 'Ceiling Fans Dubai | Urban Choice',
@@ -799,7 +799,7 @@ export const products: Product[] = [
     fullDescription:
       'Polypropylene random copolymer (PPR) pipes for hot and cold water distribution in residential and commercial buildings. Heat-fusion jointing system provides leak-free connections. Available in various pressure ratings.',
     availability: 'in_stock',
-    featured: false,
+    featured: true,
     tags: ['PPR pipe', 'water pipe', 'plumbing'],
     seo: {
       title: 'PPR Pipes Dubai | Urban Choice',
@@ -1110,7 +1110,7 @@ export const products: Product[] = [
     fullDescription:
       'Cementitious polymer-improved tile adhesive suitable for ceramic, porcelain, and natural stone tiles on floors and walls. Extended open time for large-format tile installation. Suitable for interior and exterior use.',
     availability: 'in_stock',
-    featured: false,
+    featured: true,
     tags: ['tile adhesive', 'tile fix', 'adhesive', 'building material'],
     seo: {
       title: 'Tile Adhesive Dubai | Urban Choice',
@@ -1158,34 +1158,34 @@ export const products: Product[] = [
   },
   {
     id: 'prod-060',
-    name: 'Paver Block',
+    name: 'Interlock',
     slug: 'paver-block',
     category: 'building-materials',
     images: [
       img(
         '/building-materials/paver-block.png',
-        'Concrete paver blocks for driveways and pathways',
+        'Interlock paving blocks for driveways and pathways',
       ),
     ],
-    thumbnail: thumb('/building-materials/paver-block.png', 'Paver Block'),
-    shortDescription: 'Concrete paver blocks for driveways, pathways, and outdoor flooring.',
+    thumbnail: thumb('/building-materials/paver-block.png', 'Interlock'),
+    shortDescription: 'Interlocking concrete blocks for driveways, pathways, and outdoor flooring.',
     fullDescription:
-      'High-strength concrete paver blocks for driveways, walkways, plazas, and outdoor flooring. Interlocking design provides a stable, durable surface that is easy to install and maintain. Resistant to heavy loads, UV exposure, and harsh UAE weather conditions. Available in various shapes, sizes, and finishes to suit residential and commercial landscaping projects.',
+      'High-strength interlocking concrete blocks for driveways, walkways, plazas, and outdoor flooring. The interlocking design provides a stable, durable surface that is easy to install and maintain. Resistant to heavy loads, UV exposure, and harsh UAE weather conditions. Available in various shapes, sizes, and finishes to suit residential and commercial landscaping projects.',
     availability: 'in_stock',
     featured: false,
     tags: [
-      'paver block',
+      'interlock',
+      'interlocking blocks',
       'concrete pavers',
-      'interlocking pavers',
       'driveway',
       'outdoor flooring',
       'landscaping',
     ],
     seo: {
-      title: 'Paver Blocks Dubai | Urban Choice',
+      title: 'Interlock Blocks Dubai | Urban Choice',
       description:
-        'Buy concrete paver blocks for driveways, pathways, and outdoor flooring in Dubai UAE.',
-      keywords: ['paver blocks Dubai', 'concrete pavers UAE', 'interlocking pavers Dubai'],
+        'Buy interlocking concrete blocks for driveways, pathways, and outdoor flooring in Dubai UAE.',
+      keywords: ['interlock Dubai', 'interlocking blocks UAE', 'concrete pavers Dubai'],
     },
   },
 
@@ -1230,11 +1230,11 @@ export const products: Product[] = [
   },
   {
     id: 'prod-064',
-    name: 'Self Tapping Screws',
+    name: 'Self Drilling Screws',
     slug: 'self-tapping-screws',
     category: 'fasteners',
-    images: [img('/fasteners/self-taping-screws.png', 'Self tapping screws box')],
-    thumbnail: thumb('/fasteners/self-taping-screws.png', 'Self Tapping Screws'),
+    images: [img('/fasteners/self-taping-screws.png', 'Self drilling screws box')],
+    thumbnail: thumb('/fasteners/self-taping-screws.png', 'Self Drilling Screws'),
     shortDescription: 'Self-drilling screws for fixing to steel and metal without pre-drilling.',
     fullDescription:
       'Zinc-plated carbon steel self-drilling self-tapping screws with bonded washer. Suitable for fixing roofing sheets, cladding, and steel purlins. Available in hex head and pan head styles.',
@@ -1249,21 +1249,21 @@ export const products: Product[] = [
   },
   {
     id: 'prod-065',
-    name: 'Drywall Screws',
+    name: 'Screws',
     slug: 'drywall-screws',
     category: 'fasteners',
-    images: [img('/fasteners/drywall-screws.png', 'Drywall screws bugle head')],
-    thumbnail: thumb('/fasteners/drywall-screws.png', 'Drywall Screws'),
-    shortDescription: 'Coarse thread drywall screws for fixing gypsum board to frames.',
+    images: [img('/fasteners/drywall-screws.png', 'Screws for gypsum board, wood and metal')],
+    thumbnail: thumb('/fasteners/drywall-screws.png', 'Screws'),
+    shortDescription: 'Screws for gypsum board, wood, and metal applications.',
     fullDescription:
-      'Black phosphate bugle-head drywall screws with coarse thread for fixing gypsum board to steel and timber frames. Phillips drive for easy installation. Available in various lengths.',
+      'Versatile screws for a wide range of applications — including bugle-head screws for gypsum board, wood screws for timber framing and joinery, and self-drilling screws for metal fixing. Available in various lengths and drive types for every construction and fit-out need.',
     availability: 'in_stock',
-    featured: false,
-    tags: ['drywall screws', 'gypsum screws', 'fasteners'],
+    featured: true,
+    tags: ['screws', 'drywall screws', 'wood screws', 'gypsum screws', 'fasteners'],
     seo: {
-      title: 'Drywall Screws Dubai | Urban Choice',
-      description: 'Buy drywall screws and gypsum board fixings in Dubai UAE.',
-      keywords: ['drywall screws Dubai', 'gypsum screws UAE'],
+      title: 'Screws Dubai | Urban Choice',
+      description: 'Buy screws for gypsum board, wood, and metal in Dubai UAE.',
+      keywords: ['screws Dubai', 'drywall screws UAE', 'wood screws Dubai'],
     },
   },
   {
@@ -1297,7 +1297,7 @@ export const products: Product[] = [
     fullDescription:
       'Zinc-plated full-length threaded rods in various metric sizes. Can be cut to required length. For pipe hangers, framing, anchoring equipment, and structural connections in construction and mechanical installations.',
     availability: 'in_stock',
-    featured: false,
+    featured: true,
     tags: ['threaded rod', 'all-thread', 'fasteners'],
     seo: {
       title: 'Threaded Rods Dubai | Urban Choice',
@@ -1394,7 +1394,7 @@ export const products: Product[] = [
     fullDescription:
       'Heavy-duty corded angle grinder for grinding, cutting, and polishing metal. Spindle lock for quick disc changes. Adjustable side handle and safety guard. Suitable for construction, fabrication, and maintenance work.',
     availability: 'in_stock',
-    featured: true,
+    featured: false,
     tags: ['angle grinder', 'grinder', 'power tool'],
     seo: {
       title: 'Angle Grinder Dubai | Urban Choice',
@@ -1413,7 +1413,7 @@ export const products: Product[] = [
     fullDescription:
       'SDS-plus rotary hammer drill with drilling, hammer drilling, and chiselling modes. High impact energy for efficient drilling into concrete and masonry. Ideal for electrical, plumbing, and structural work.',
     availability: 'in_stock',
-    featured: false,
+    featured: true,
     tags: ['hammer drill', 'SDS drill', 'rotary hammer', 'power tool'],
     seo: {
       title: 'Hammer Drill Dubai | Urban Choice',
@@ -1778,7 +1778,7 @@ export const products: Product[] = [
     fullDescription:
       'Clear LLDPE hand stretch wrap film with high cling and puncture resistance. For pallet wrapping, bundling, and protecting items in warehouses and during transport.',
     availability: 'in_stock',
-    featured: false,
+    featured: true,
     tags: ['stretch film', 'pallet wrap', 'stretch wrap'],
     seo: {
       title: 'Stretch Film Dubai | Urban Choice',
@@ -1938,6 +1938,131 @@ export const products: Product[] = [
       title: 'Packing Rope Dubai | Urban Choice',
       description: 'Buy packing rope and tying rope in Dubai UAE.',
       keywords: ['packing rope Dubai', 'rope UAE'],
+    },
+  },
+
+  // ── PACKAGING MATERIALS (continued) ───────────────────────────────────────
+  {
+    id: 'prod-101',
+    name: 'Polythene Roll',
+    slug: 'polythene-roll',
+    category: 'packaging-materials',
+    images: [
+      img('/packaging-materials/polythene-roll.png', 'Polythene roll for wrapping and protection'),
+    ],
+    thumbnail: thumb('/packaging-materials/polythene-roll.png', 'Polythene Roll'),
+    shortDescription: 'Heavy-duty polythene rolls for covering, wrapping, and site protection.',
+    fullDescription:
+      'Heavy-duty polyethylene (polythene) rolls for a wide range of packaging and construction site applications — including covering floors, walls, and materials during painting or renovation, wrapping pallets and furniture, and protecting stored goods from dust and moisture. Available in clear and black options in various widths and thicknesses. Tear-resistant and waterproof for reliable protection indoors and outdoors.',
+    availability: 'in_stock',
+    featured: false,
+    tags: ['polythene roll', 'poly sheeting', 'plastic roll', 'site protection', 'packaging'],
+    seo: {
+      title: 'Polythene Roll Dubai | Urban Choice',
+      description: 'Buy heavy-duty polythene rolls for site protection and packaging in Dubai UAE.',
+      keywords: ['polythene roll Dubai', 'poly sheeting UAE', 'plastic wrap roll Dubai'],
+    },
+  },
+
+  // ── ELECTRICAL ITEMS (continued) ──────────────────────────────────────────
+  {
+    id: 'prod-102',
+    name: 'GI Cable Tray',
+    slug: 'gi-cable-tray',
+    category: 'electrical-items',
+    images: [img('/electrical-items/gi-cable-tray.png', 'GI cable tray for cable management')],
+    thumbnail: thumb('/electrical-items/gi-cable-tray.png', 'GI Cable Tray'),
+    shortDescription: 'Galvanised iron cable trays for organised cable routing in buildings.',
+    fullDescription:
+      'Hot-dip galvanised iron (GI) cable trays for systematic routing and support of electrical cables in commercial, industrial, and high-rise building installations. Perforated and ladder-type designs available for different load capacities. Corrosion-resistant finish ensures long service life in humid and coastal environments. Compatible with standard fittings, bends, and reducers for flexible installation layouts.',
+    availability: 'in_stock',
+    featured: false,
+    tags: [
+      'cable tray',
+      'GI cable tray',
+      'galvanised cable tray',
+      'cable management',
+      'electrical',
+    ],
+    seo: {
+      title: 'GI Cable Tray Dubai | Urban Choice',
+      description: 'Buy galvanised iron cable trays for cable management in Dubai UAE.',
+      keywords: ['GI cable tray Dubai', 'cable tray UAE', 'galvanised cable tray Dubai'],
+    },
+  },
+  {
+    id: 'prod-103',
+    name: 'GI Slotted Channels',
+    slug: 'gi-slotted-channels',
+    category: 'electrical-items',
+    images: [
+      img('/electrical-items/gi-slotted-channels.png', 'GI slotted channels for cable support'),
+    ],
+    thumbnail: thumb('/electrical-items/gi-slotted-channels.png', 'GI Slotted Channels'),
+    shortDescription: 'Galvanised slotted channels (Unistrut) for cable and equipment support.',
+    fullDescription:
+      'Galvanised iron slotted channels, also known as Unistrut or strut channels, used for supporting conduits, cable trays, pipes, and electrical equipment in mechanical and electrical installations. Pre-slotted design allows flexible positioning of fittings and brackets without drilling. Hot-dip galvanised finish provides excellent corrosion resistance. Available in standard lengths and multiple channel widths.',
+    availability: 'in_stock',
+    featured: false,
+    tags: [
+      'slotted channel',
+      'GI channel',
+      'Unistrut',
+      'strut channel',
+      'cable support',
+      'electrical',
+    ],
+    seo: {
+      title: 'GI Slotted Channels Dubai | Urban Choice',
+      description: 'Buy GI slotted channels and strut channels for cable support in Dubai UAE.',
+      keywords: ['slotted channel Dubai', 'GI channel UAE', 'Unistrut Dubai'],
+    },
+  },
+  {
+    id: 'prod-104',
+    name: 'GI Trunking',
+    slug: 'gi-trunking',
+    category: 'electrical-items',
+    images: [img('/electrical-items/gi-trunking.png', 'GI trunking for enclosed cable management')],
+    thumbnail: thumb('/electrical-items/gi-trunking.png', 'GI Trunking'),
+    shortDescription:
+      'Galvanised iron trunking for enclosed cable routing in commercial buildings.',
+    fullDescription:
+      'Galvanised iron (GI) cable trunking with removable lids for neat, enclosed cable management in offices, factories, and commercial buildings. Provides mechanical protection for electrical cables while keeping installations tidy and accessible for maintenance. Available in various sizes to accommodate different cable volumes. Suitable for surface mounting on walls and ceilings. Accessories including bends, tees, and end caps available.',
+    availability: 'in_stock',
+    featured: false,
+    tags: [
+      'GI trunking',
+      'cable trunking',
+      'galvanised trunking',
+      'cable management',
+      'electrical',
+    ],
+    seo: {
+      title: 'GI Trunking Dubai | Urban Choice',
+      description: 'Buy galvanised iron cable trunking for enclosed cable management in Dubai UAE.',
+      keywords: ['GI trunking Dubai', 'cable trunking UAE', 'galvanised trunking Dubai'],
+    },
+  },
+  {
+    id: 'prod-105',
+    name: 'Vini Tapes',
+    slug: 'vini-tapes',
+    category: 'electrical-items',
+    images: [img('/electrical-items/vini-tapes.png', 'Vinyl electrical insulation tapes')],
+    thumbnail: thumb('/electrical-items/vini-tapes.png', 'Vini Tapes'),
+    shortDescription:
+      'Vinyl electrical insulation tapes for cable jointing and wire identification.',
+    fullDescription:
+      'High-quality PVC vinyl electrical insulation tapes for insulating, splicing, and colour-coding electrical wires and cables. Excellent dielectric strength with good resistance to moisture, abrasion, and UV exposure. Suitable for both indoor and outdoor electrical applications. Available in a full range of colours for phase identification and wire coding in compliance with wiring regulations.',
+    availability: 'in_stock',
+    featured: false,
+    tags: ['vini tape', 'electrical tape', 'insulation tape', 'PVC tape', 'electrical'],
+    seo: {
+      title: 'Electrical Insulation Tapes Dubai | Urban Choice',
+      description:
+        'Buy vinyl electrical insulation tapes for cable jointing and wire coding in Dubai UAE.',
+      keywords: ['electrical tape Dubai', 'insulation tape UAE', 'vini tape Dubai'],
     },
   },
 ];

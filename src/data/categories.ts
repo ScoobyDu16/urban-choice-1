@@ -148,7 +148,7 @@ export const categories: Category[] = [
         'Buy door hinges, locks, handles, hand tools and hardware accessories in Dubai. Reliable hardware supplies for contractors and builders in UAE.',
       keywords: ['hardware Dubai', 'door hinges UAE', 'hand tools Dubai', 'hardware supplier UAE'],
     },
-    featured: true,
+    featured: false,
   },
   {
     id: 'cat-004',
@@ -244,7 +244,7 @@ export const categories: Category[] = [
         'Buy PPR pipes, PVC pipes, ball valves, water pumps and plumbing fittings in Dubai. Complete plumbing supplies for UAE construction projects.',
       keywords: ['plumbing supplies Dubai', 'PPR pipes UAE', 'PVC pipes Dubai', 'ball valves UAE'],
     },
-    featured: false,
+    featured: true,
   },
   {
     id: 'cat-006',
@@ -340,7 +340,7 @@ export const categories: Category[] = [
         'Buy hex bolts, nuts, screws, anchor bolts and threaded rods in Dubai. Wide range of fasteners for construction and industrial use in UAE.',
       keywords: ['fasteners Dubai', 'bolts UAE', 'anchor bolts Dubai', 'screws supplier UAE'],
     },
-    featured: false,
+    featured: true,
   },
   {
     id: 'cat-008',
@@ -388,7 +388,7 @@ export const categories: Category[] = [
         'welding machine UAE',
       ],
     },
-    featured: true,
+    featured: false,
   },
   {
     id: 'cat-009',

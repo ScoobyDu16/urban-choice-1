@@ -5,7 +5,6 @@ import { siteConfig } from '@/data/site-config';
 import { FOOTER_LINKS } from '@/constants';
 import { generateWhatsAppUrl, generateTelUrl, generateMailtoUrl } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
-import { Logo } from '@/components/layout/Logo';
 
 /* Dark-navy footer background — fixed so it shows regardless of dark/light mode */
 const navyBg = 'hsl(215 50% 9%)';
@@ -26,9 +25,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* ── Brand column ──────────────────────────────────── */}
           <div className="lg:col-span-1">
-            <Logo textSize="text-base" light />
-
-            <p className="mt-4 text-sm leading-relaxed text-white/60">{business.description}</p>
+            <p className="text-sm leading-relaxed text-white/60">{business.description}</p>
 
             {/* Social links */}
             {Object.values(business.socialLinks).some(Boolean) && (
