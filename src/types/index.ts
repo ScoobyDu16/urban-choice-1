@@ -166,7 +166,6 @@ export interface SiteConfig {
   analytics: {
     ga4MeasurementId: string;
     gtmId: string;
-    sentryDsn: string;
   };
   integrations: {
     googleMapsApiKey?: string;

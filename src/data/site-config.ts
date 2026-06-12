@@ -23,7 +23,7 @@ export const siteConfig: SiteConfig = {
     mobile: '+971 54 586 8790',
     whatsapp: '971545868790',
     address: {
-      street: 'Dubai',
+      street: 'Saeed Bin Thani Building, 76 31D St, Naif, Deira',
       city: 'Dubai',
       postalBox: 'P.O Box: 379719',
       country: 'United Arab Emirates',
@@ -60,12 +60,11 @@ export const siteConfig: SiteConfig = {
       'power tools Dubai',
       'urban choice Dubai',
     ],
-    defaultOgImage: '/images/og-default.jpg',
+    defaultOgImage: '/images/og-default.png',
   },
   analytics: {
     ga4MeasurementId: process.env.NEXT_PUBLIC_GA4_ID || 'G-XXXXXXXXXX',
     gtmId: process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX',
-    sentryDsn: process.env.NEXT_PUBLIC_SENTRY_DSN || '',
   },
   integrations: {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
