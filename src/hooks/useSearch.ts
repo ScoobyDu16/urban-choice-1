@@ -4,11 +4,9 @@ import { useState, useMemo, useCallback } from 'react';
 import { searchProducts } from '@/data/products';
 import { categories } from '@/data/categories';
 import type { SearchResult } from '@/types';
-import { trackSearch } from '@/lib/analytics';
 
 export function useSearch() {
   const [query, setQuery] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
 
   const results: SearchResult = useMemo(() => {
     if (!query.trim()) return { products: [], categories: [], total: 0 };
@@ -26,20 +24,13 @@ export function useSearch() {
     };
   }, [query]);
 
-  const handleSearch = useCallback(
-    (value: string) => {
-      setQuery(value);
-      if (value.trim().length > 2) {
-        trackSearch(value, results.total);
-      }
-    },
-    [results.total],
-  );
+  const handleSearch = useCallback((value: string) => {
+    setQuery(value);
+  }, []);
 
   const clearSearch = useCallback(() => {
     setQuery('');
-    setIsOpen(false);
   }, []);
 
-  return { query, results, isOpen, setIsOpen, handleSearch, clearSearch };
+  return { query, results, handleSearch, clearSearch };
 }

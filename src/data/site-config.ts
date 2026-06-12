@@ -67,9 +67,6 @@ export const siteConfig: SiteConfig = {
     gtmId: process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX',
   },
   integrations: {
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-    googleAdsConversionId: process.env.NEXT_PUBLIC_GADS_CONVERSION_ID,
-    googleAdsConversionLabel: process.env.NEXT_PUBLIC_GADS_CONVERSION_LABEL,
     googleSearchConsoleVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
   },
   features: {

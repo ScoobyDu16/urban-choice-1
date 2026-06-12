@@ -9,8 +9,6 @@ import type { Product } from '@/types';
 
 interface ProductsGridProps {
   products: Product[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  category?: any; // retained for backwards compatibility — category page passes this
   initialSearchQuery?: string;
 }
 

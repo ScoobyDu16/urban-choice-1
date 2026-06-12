@@ -67,7 +67,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-900/70 to-slate-900/40" />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-950/85 via-slate-900/70 to-slate-900/40" />
           <div className="bg-primary absolute top-0 left-0 h-1 w-full" />
         </div>
         <div className="relative container mx-auto max-w-7xl px-4 py-20">
@@ -102,7 +102,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             <p className="text-muted-foreground">No products found in this category yet.</p>
           </div>
         ) : (
-          <ProductsGrid products={categoryProducts} category={category} />
+          <ProductsGrid products={categoryProducts} />
         )}
       </div>
     </>

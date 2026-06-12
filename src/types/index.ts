@@ -168,9 +168,6 @@ export interface SiteConfig {
     gtmId: string;
   };
   integrations: {
-    googleMapsApiKey?: string;
-    googleAdsConversionId?: string;
-    googleAdsConversionLabel?: string;
     googleSearchConsoleVerification?: string;
   };
   features: {
