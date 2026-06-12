@@ -16,7 +16,7 @@ export const siteConfig: SiteConfig = {
       'Urban Choice is a leading building materials supplier in Dubai, UAE. We supply high-quality construction materials across a wide range of categories — safety items, sanitary ware, hardware, electrical supplies, plumbing, building materials, fasteners, power tools, paints, and packaging materials. We have built a reputation for reliability, quality products, and exceptional customer service.',
     logo: '/images/logo.svg',
     favicon: '/favicon.ico',
-    url: 'https://urbanchoicebmt.com',
+    url: 'https://www.urbanchoice.ae',
     email: 'urbanchoicebmt@gmail.com',
     phone: '04 332 6885',
     phone2: '04 335 8298',
