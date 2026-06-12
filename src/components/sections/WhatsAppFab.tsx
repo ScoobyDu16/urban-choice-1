@@ -19,7 +19,7 @@ export default function WhatsAppFab() {
   );
 
   return (
-    <div className="fixed right-6 bottom-6 z-40 flex flex-col items-end gap-3">
+    <div className="fixed right-6 bottom-20 z-40 flex flex-col items-end gap-3">
       <AnimatePresence>
         {expanded && (
           <motion.div
