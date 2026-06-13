@@ -151,9 +151,22 @@ export default function Footer() {
         <Separator className="my-10 bg-white/10" />
 
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-sm text-white/40">
-            &copy; {copyrightYear} {business.legalName}. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center gap-1 sm:items-start">
+            <p className="text-sm text-white/40">
+              &copy; {copyrightYear} {business.legalName}. All rights reserved.
+            </p>
+            <p className="text-xs text-white/30">
+              Developed by{' '}
+              <a
+                href="https://www.linkedin.com/in/amarpal-singh-26381b153/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 underline underline-offset-2 transition-colors duration-200 hover:text-white"
+              >
+                Amar
+              </a>
+            </p>
+          </div>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {FOOTER_LINKS.legal.map((link) => (
               <li key={link.href}>
